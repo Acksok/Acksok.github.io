@@ -19,6 +19,7 @@ function loadProducts() {
   })
   .then(response => {
     if (!response.ok) throw new Error(`Error HTTP! Estado: ${response.status}`);
+
     return response.json();
   })
   .then(products => {
@@ -41,6 +42,8 @@ function loadProducts() {
     renderProducts(placeholderProducts);
   });
 }
+
+
     const placeholderSVG = 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxIiBoZWlnaHQ9IjEiIHN0eWxlPSJiYWNrZ3JvdW5kLWNvbG9yOiNmNWY1ZjUiPjwvc3ZnPg==';
     
     container.innerHTML = products.map(product => `
@@ -56,7 +59,7 @@ function loadProducts() {
         <h3>${product.name}</h3>
         <p>${product.description}</p>
       </div>
-    `).join('');
+    (`).join('');
 
     initLazyLoading();
   }
