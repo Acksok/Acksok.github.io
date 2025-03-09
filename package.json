@@ -1,19 +1,12 @@
 {
-  "name": "paginaquesos",
+  "name": "paginaquesos-frontend",
   "version": "1.0.0",
-  "description": "Sitio web de Quesos Sagrados",
-  "main": "server.js",
+  "description": "Frontend de Quesos Sagrados (Despliegue estático)",
   "scripts": {
-    "deploy": "gh-pages -d dist -x '**/node_modules/**'",
+    "deploy": "gh-pages -d dist",
     "predeploy": "npm run build",
-    "build": "mkdirp dist && copyfiles -u 1 \"src/**/*\" \"!src/node_modules/**/*\" dist/",
-    "start": "node server.js",
+    "build": "mkdirp dist && copyfiles -u 1 \"src/**/*\" dist/",
     "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "dependencies": {
-    "compression": "^1.8.0",
-    "cors": "^2.8.5",
-    "express": "^4.21.2"
   },
   "devDependencies": {
     "copyfiles": "^2.4.1",
@@ -25,6 +18,6 @@
     "gourmet",
     "alimentos"
   ],
-  "author": "",
+  "author": "Tu Nombre",
   "license": "ISC"
 }
