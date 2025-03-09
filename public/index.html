@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Quesos Sagrados - Tablas Holísticas</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Estilos temporales del menú lateral */
+    #side-menu {
+      position: fixed;
+      top: 0;
+      right: -400px;
+      width: 400px;
+      height: 100%;
+      background: #fff;
+      box-shadow: -4px 0 15px rgba(0,0,0,0.1);
+      transition: right 0.3s ease-in-out;
+      z-index: 1000;
+      padding: 25px;
+    }
+
+    #side-menu.open {
+      right: 0;
+    }
+
+    .menu-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.5);
+      z-index: 999;
+      display: none;
+    }
+
+    .menu-overlay.active {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <!-- Overlay para el menú -->
+  <div class="menu-overlay"></div>
+
+  <header>
+    <nav>
+      <h1>Quesarte</h1>
+      <ul>
+        <li><a href="#productos">Productos</a></li>
+        <li><a href="#filosofia">Filosofía</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+        <li><a href="cotizar.html">Cotizar</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h2>Bienvenido a un viaje de sabor y espiritualidad</h2>
+    <p>Descubre nuestras tablas de quesos artesanales, preparadas con ingredientes naturales y un toque de energía positiva.</p>
+    <div class="hero-buttons">
+      <a href="#productos" class="btn">Explora nuestros productos</a>
+      <a href="cotizar.html" class="btn cotizar-btn">Cotizar</a>
+    </div>
+  </section>
+
+  <main>
+    <section id="productos">
+      <h2>Nuestras Tablas</h2>
+      <div class="productos-container">
+        <!-- Productos se cargarán dinámicamente -->
+      </div>
+    </section>
+
+    <section id="filosofia">
+      <div class="philosophy-content">
+        <h2>Nuestra Filosofía</h2>
+        <p>Creemos en la conexión entre la alimentación y el bienestar espiritual. Cada tabla es preparada con dedicación y amor, buscando armonizar cuerpo, mente y espíritu.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer id="contacto">
+    <div class="footer-content">
+      <h2>Contacto</h2>
+      <p>Para consultas y pedidos: <a href="mailto:info@quesossagrados.com">info@quesossagrados.com</a></p>
+      <p class="copyright">&copy; 2025 Quesos Sagrados. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <!-- Menú Lateral -->
+  <div id="side-menu">
+    <button id="close-menu">&times;</button>
+    <div class="menu-content">
+      <h2 id="menu-title"></h2>
+      <p id="menu-description"></p>
+      <div class="ingredients-section">
+        <h3>Ingredientes</h3>
+        <div id="menu-ingredients" class="ingredients-list"></div>
+      </div>
+      <div class="price-section">
+        <div class="price-tag">
+          <span class="price-label">Precio Total:</span>
+          <span id="menu-price" class="price-amount"></span>
+        </div>
+        <button id="botonCotizar" class="cotizar-btn">Cotizar Ahora</button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>

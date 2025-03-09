@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Personaliza tu Tabla de Quesos</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>Quesos Sagrados</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="index.html#productos">Productos</a></li>
+        <li><a href="index.html#contacto">Contacto</a></li>
+        <li><a href="cotizar.html">Cotizar</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container">
+    <div class="left-panel">
+      <img id="main-image" 
+           src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxIiBoZWlnaHQ9IjEiIHN0eWxlPSJiYWNrZ3JvdW5kLWNvbG9yOiNmNWY1ZjUiPjwvc3ZnPg==" 
+           data-src="imagenes/tabla1.jpg" 
+           alt="Tabla de Quesos" 
+           loading="lazy"
+           class="lazy-image"
+           onerror="window.handleImageError(this)">
+    </div>
+
+    <div class="right-panel">
+      <h2>Personaliza tu Tabla</h2>
+      
+      <div class="summary-box" id="summary-box">
+        Selecciona opciones para ver la descripción aquí.
+      </div>
+
+      <!-- Sección Tamaño -->
+      <div class="option-section">
+        <h3>Tamaño</h3>
+        <div class="options">
+          <button class="option-btn" 
+                  data-image="imagenes/tabla1.jpg" 
+                  data-description="Tabla Pequeña para 2-3 personas">
+            Pequeño
+          </button>
+          <button class="option-btn" 
+                  data-image="imagenes/tabla2.jpg" 
+                  data-description="Tabla Mediana para 4-6 personas">
+            Mediano
+          </button>
+          <button class="option-btn" 
+                  data-image="imagenes/tabla3.jpg" 
+                  data-description="Tabla Grande para 8-10 personas">
+            Grande
+          </button>
+        </div>
+      </div>
+
+      <!-- Sección Quesos -->
+      <div class="option-section">
+        <h3>Quesos</h3>
+        <div class="options">
+          <button class="option-btn" 
+                  data-suboptions="Brie,Camembert,Emmental"
+                  data-description="Quesos">
+            Suaves
+          </button>
+          <button class="option-btn" 
+                  data-suboptions="Roquefort,Gorgonzola,Cheddar"
+                  data-description="Quesos">
+            Fuertes
+          </button>
+        </div>
+        <div class="sub-options" data-category="Quesos"></div>
+      </div>
+
+      <!-- Sección Frutas -->
+      <div class="option-section">
+        <h3>Frutas</h3>
+        <div class="options">
+          <button class="option-btn" 
+                  data-suboptions="Uvas,Fresas,Manzana"
+                  data-description="Frutas">
+            Dulces
+          </button>
+          <button class="option-btn" 
+                  data-suboptions="Higos,Pera,Duraznos"
+                  data-description="Frutas">
+            Variadas
+          </button>
+        </div>
+        <div class="sub-options" data-category="Frutas"></div>
+      </div>
+
+      <!-- Sección Carnes -->
+      <div class="option-section">
+        <h3>Carnes</h3>
+        <div class="options">
+          <button class="option-btn" 
+                  data-suboptions="Jamón Serrano,Salami"
+                  data-description="Carnes">
+            Clásicas
+          </button>
+          <button class="option-btn" 
+                  data-suboptions="Prosciutto,Lomo Ahumado"
+                  data-description="Carnes">
+            Gourmet
+          </button>
+        </div>
+        <div class="sub-options" data-category="Carnes"></div>
+      </div>
+
+      <button id="btn-cotizar" class="cotizar-btn">¡Cotizar por WhatsApp!</button>
+    </div>
+  </main>
+
+  <!-- Script externo -->
+  <script src="cotizar.js"></script>
+</body>
+</html>
