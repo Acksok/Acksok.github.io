@@ -1,23 +1,30 @@
 {
+  "name": "paginaquesos",
+  "version": "1.0.0",
+  "description": "Sitio web de Quesos Sagrados",
+  "main": "server.js",
+  "scripts": {
+    "deploy": "gh-pages -d dist -x '**/node_modules/**'",
+    "predeploy": "npm run build",
+    "build": "mkdirp dist && copyfiles -u 1 \"src/**/*\" \"!src/node_modules/**/*\" dist/",
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
   "dependencies": {
-    "again": "^0.0.1",
     "compression": "^1.8.0",
     "cors": "^2.8.5",
     "express": "^4.21.2"
   },
   "devDependencies": {
-    "gh-pages": "^6.3.0"
+    "copyfiles": "^2.4.1",
+    "gh-pages": "^6.3.0",
+    "mkdirp": "^3.0.1"
   },
-  "name": "paginaquesos",
-  "version": "1.0.0",
-  "description": "",
-  "main": "generateProducts.js",
-  "scripts": {
-    "deploy": "gh-pages -d . -x '**/node_modules/**'",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
-  },
-  "keywords": [],
+  "keywords": [
+    "quesos",
+    "gourmet",
+    "alimentos"
+  ],
   "author": "",
   "license": "ISC"
 }
