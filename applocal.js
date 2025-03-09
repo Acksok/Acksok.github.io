@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Cargar productos
   function loadProducts() {
-    fetch('https://acksok.github.io/products', {
+    fetch('https://acksok.github.io/products.json', {
       method: 'GET',
       mode: 'cors',
       headers: {
