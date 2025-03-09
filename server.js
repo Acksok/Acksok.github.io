@@ -30,7 +30,7 @@ app.use(express.static(path.join(__dirname, 'src')));
 // Endpoint para productos
 app.get('/products', (req, res) => {
   res.setHeader('Content-Type', 'application/json');
-  res.sendFile(path.join(__dirname, 'public', 'products.json'));
+  res.sendFile(path.join(__dirname, 'src', 'products.json'));
 });
 
 // Iniciar servidor
