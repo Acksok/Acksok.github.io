@@ -1,11 +1,17 @@
 document.addEventListener('DOMContentLoaded', function() {
-  // Elementos del menú lateral
+  // Elementos del DOM
   const sideMenu = document.getElementById('side-menu');
   const closeMenuBtn = document.getElementById('close-menu');
   const menuIngredients = document.getElementById('menu-ingredients');
   const menuPrice = document.getElementById('menu-price');
   const menuTitle = document.getElementById('menu-title');
-  const container = document.getElementById('products-container'); // Asegúrate de tener este elemento en tu HTML
+  const container = document.getElementById('products-container');
+
+  // Validación de elementos críticos
+  if (!container) {
+    console.error('Error: El contenedor de productos no existe en el DOM');
+    return;
+  }
 
   // Cargar productos
   function loadProducts() {
@@ -18,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     })
     .then(response => {
-      if (!response.ok) throw new Error(`Error HTTP! Estado: ${response.status}`); // Backticks añadidos
+      if (!response.ok) throw new Error(`Error HTTP! Estado: ${response.status}`);
       return response.json();
     })
     .then(products => {
@@ -28,43 +34,46 @@ document.addEventListener('DOMContentLoaded', function() {
     .catch(error => {
       console.error('Error cargando productos:', error);
       showError('No pudimos cargar los productos. Intenta recargar la página.');
-    // Optional: Use static placeholder data
-    const placeholderProducts = [
-      {
-        name: 'Producto Ejemplo',
-        description: 'Descripción de ejemplo.',
-        ingredients: ['Ingrediente 1', 'Ingrediente 2'],
-        price: 99.99,
-        image: 'placeholder.png'
-      }
-    ];
-    renderProducts(placeholderProducts);
-  });
-}
 
+      // Datos de placeholder
+      const placeholderProducts = [{
+        name: 'Café Especial',
+        description: 'Mezcla premium de granos arábicos',
+        ingredients: ['Granos arábicos', 'Leche entera', 'Vainilla'],
+        price: 4.99,
+        image: 'coffee-placeholder.jpg'
+      }];
 
- function renderProducts(products) {
-     const placeholderSVG = 'data:image/svg+xml;base64,...'; // Acorta el código base64 para brevedad
+      renderProducts(placeholderProducts);
+    });
+  }
 
-     // Usar backticks para la plantilla de cadena
-     container.innerHTML = products.map(product => `
-       <div class="producto"
-            data-ingredients="${product.ingredients.join(', ')}"
-            data-price="${product.price.toFixed(2)}">
-         <img src="${placeholderSVG}"
-              data-src="/assets/images/${product.image}"
-              alt="${product.name}"
-              loading="lazy"
-              class="lazy-image"
-              onerror="window.handleImageError(this)">
-         <h3>${product.name}</h3>
-         <p>${product.description}</p>
-       </div>
-     `).join('');
+  function renderProducts(products) {
+    const placeholderSVG = 'data:image/svg+xml;base64,...';
 
+    // Validación de datos
+    if (!Array.isArray(products)) {
+      console.error('Error: Los productos deben ser un array');
+      return;
+    }
 
-     initLazyLoading();
-   }
+    container.innerHTML = products.map(product => `
+      <div class="producto"
+           data-ingredients="${(product.ingredients || []).join(', ')}"
+           data-price="${(product.price || 0).toFixed(2)}">
+        <img src="${placeholderSVG}"
+             data-src="/assets/images/${product.image || 'default.jpg'}"
+             alt="${product.name || 'Producto'}"
+             loading="lazy"
+             class="lazy-image"
+             onerror="window.handleImageError(this)">
+        <h3>${product.name || 'Producto sin nombre'}</h3>
+        <p>${product.description || 'Descripción no disponible'}</p>
+      </div>
+    `).join('');
+
+    initLazyLoading();
+  }
 
   // Manejo de errores de imágenes
   window.handleImageError = function(imgElement) {
