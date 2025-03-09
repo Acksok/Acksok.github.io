@@ -44,26 +44,27 @@ function loadProducts() {
 }
 
 
-    const placeholderSVG = 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxIiBoZWlnaHQ9IjEiIHN0eWxlPSJiYWNrZ3JvdW5kLWNvbG9yOiNmNWY1ZjUiPjwvc3ZnPg==';
-    
-   container.innerHTML = products.map(product => `
-     <div class="producto"
-          data-ingredients="${product.ingredients.join(', ')}"
-          data-price="${product.price.toFixed(2)}">
-       <img src="${placeholderSVG}"
-            data-src="/assets/images/${product.image}"
-            alt="${product.name}"
-            loading="lazy"
-            class="lazy-image"
-            onerror="window.handleImageError(this)">
-       <h3>${product.name}</h3>
-       <p>${product.description}</p>
-     </div>
-   `).join('');
+ function renderProducts(products) {
+     const placeholderSVG = 'data:image/svg+xml;base64,...'; // Acorta el código base64 para brevedad
 
+     // Usar backticks para la plantilla de cadena
+     container.innerHTML = products.map(product => `
+       <div class="producto"
+            data-ingredients="${product.ingredients.join(', ')}"
+            data-price="${product.price.toFixed(2)}">
+         <img src="${placeholderSVG}"
+              data-src="/assets/images/${product.image}"
+              alt="${product.name}"
+              loading="lazy"
+              class="lazy-image"
+              onerror="window.handleImageError(this)">
+         <h3>${product.name}</h3>
+         <p>${product.description}</p>
+       </div>
+     `).join('');
 
-    initLazyLoading();
-  }
+     initLazyLoading();
+   }
 
   // Manejo de errores de imágenes
   window.handleImageError = function(imgElement) {
