@@ -25,7 +25,7 @@ app.use(cors({
 }));
 
 // Servir archivos estáticos
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'PaginaQuesos')));
 
 // Endpoint para productos
 app.get('/products', (req, res) => {
