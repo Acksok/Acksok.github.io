@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Cargar productos
   function loadProducts() {
-    fetch('http://localhost:3000/products', {
+    fetch('https://acksok.github.io/productos', {
       method: 'GET',
       mode: 'cors',
       headers: {
