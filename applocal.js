@@ -7,34 +7,40 @@ document.addEventListener('DOMContentLoaded', function() {
   const menuTitle = document.getElementById('menu-title');
 
   // Cargar productos
-fetch('https://acksok.github.io/products', {
-  method: 'GET',
-  headers: {
-    'Content-Type': 'application/json',
-    'Accept': 'application/json'
-  }
-})
-.then(response => {
-  if (!response.ok) throw new Error(`Error HTTP! Estado: ${response.status}`);
-  return response.json();
-})
-.then(products => {
-  renderProducts(products);
-  initProductHandlers();
-})
-.catch(error => {
-  console.error('Error cargando productos:', error);
-  showError('No pudimos cargar los productos. Intenta recargar la página.');
-});
-
-  // Renderizar productos
-  function renderProducts(products) {
-    const container = document.querySelector('.productos-container');
-    if (!container) {
-      console.error('Contenedor de productos no encontrado');
-      return;
+// Fetch Products Function
+function loadProducts() {
+  fetch('https://acksok.github.io/products', {
+    method: 'GET',
+    mode: 'cors', // Adjusted mode
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
     }
-
+  })
+  .then(response => {
+    if (!response.ok) throw new Error(`Error HTTP! Estado: ${response.status}`);
+    return response.json();
+  })
+  .then(products => {
+    renderProducts(products);
+    initProductHandlers();
+  })
+  .catch(error => {
+    console.error('Error cargando productos:', error);
+    showError('No pudimos cargar los productos. Intenta recargar la página.');
+    // Optional: Use static placeholder data
+    const placeholderProducts = [
+      {
+        name: 'Producto Ejemplo',
+        description: 'Descripción de ejemplo.',
+        ingredients: ['Ingrediente 1', 'Ingrediente 2'],
+        price: 99.99,
+        image: 'placeholder.png'
+      }
+    ];
+    renderProducts(placeholderProducts);
+  });
+}
     const placeholderSVG = 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxIiBoZWlnaHQ9IjEiIHN0eWxlPSJiYWNrZ3JvdW5kLWNvbG9yOiNmNWY1ZjUiPjwvc3ZnPg==';
     
     container.innerHTML = products.map(product => `
