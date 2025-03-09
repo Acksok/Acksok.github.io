@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function() {
   function loadProducts() {
     fetch('https://acksok.github.io/products', {
       method: 'GET',
-      mode: 'cors',
+      mode: 'no-cors',
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json'
