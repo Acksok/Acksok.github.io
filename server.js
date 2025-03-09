@@ -1,36 +1,39 @@
 const express = require('express');
-const cors = require('cors');
+const path = require('path');
+const compression = require('compression');
+const cors = require('cors'); // ← Añade esta línea
 const app = express();
+const port = 3000;
 
-// Lista de orígenes permitidos
-const allowedOrigins = [
-  'https://acksok.github.io', // Tu dominio de GitHub Pages
-  'http://localhost:3000'     // Desarrollo local
-];
-
-// Configuración avanzada de CORS
-app.use(cors({
-  origin: function (origin, callback) {
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error('Origen no permitido por CORS'));
+// Compresión y caché
+app.use(compression());
+app.use(express.static(path.join(__dirname, 'public'), {
+  setHeaders: (res, path) => {
+    if (path.endsWith('.jpg') || path.endsWith('.png')) {
+      res.set('Cache-Control', 'public, max-age=31536000');
     }
-  },
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
-  credentials: true
+  }
+}))
+
+// Resto de la configuración...
+
+// Configurar CORS
+app.use(cors({
+  origin: 'https://acksok.github.io',
+  methods: ['GET', 'POST'],
+  allowedHeaders: ['Content-Type', 'Authorization']
 }));
 
-// Ruta de productos
+// Servir archivos estáticos
+app.use(express.static(path.join(__dirname, 'public')));
+
+// Endpoint para productos
 app.get('/products', (req, res) => {
-  res.json([
-    { id: 1, name: "Tabla Clásica", price: 45.99 },
-    // ... más productos
-  ]);
+  res.setHeader('Content-Type', 'application/json');
+  res.sendFile(path.join(__dirname, 'public', 'products.json'));
 });
 
-const PORT = 3000;
-app.listen(PORT, () => {
-  console.log(`Servidor CORS-ready en puerto ${PORT}`);
+// Iniciar servidor
+app.listen(port, () => {
+  console.log(`Servidor corriendo en http://localhost:${port}`);
 });
