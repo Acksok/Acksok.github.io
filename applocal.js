@@ -5,30 +5,29 @@ document.addEventListener('DOMContentLoaded', function() {
   const menuIngredients = document.getElementById('menu-ingredients');
   const menuPrice = document.getElementById('menu-price');
   const menuTitle = document.getElementById('menu-title');
+  const container = document.getElementById('products-container'); // Asegúrate de tener este elemento en tu HTML
 
   // Cargar productos
-// Fetch Products Function
-function loadProducts() {
-  fetch('https://acksok.github.io/products', {
-    method: 'GET',
-    mode: 'cors', // Adjusted mode
-    headers: {
-      'Content-Type': 'application/json',
-      'Accept': 'application/json'
-    }
-  })
-  .then(response => {
-    if (!response.ok) throw new Error(`Error HTTP! Estado: ${response.status}`);
-
-    return response.json();
-  })
-  .then(products => {
-    renderProducts(products);
-    initProductHandlers();
-  })
-  .catch(error => {
-    console.error('Error cargando productos:', error);
-    showError('No pudimos cargar los productos. Intenta recargar la página.');
+  function loadProducts() {
+    fetch('https://acksok.github.io/products', {
+      method: 'GET',
+      mode: 'cors',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      }
+    })
+    .then(response => {
+      if (!response.ok) throw new Error(`Error HTTP! Estado: ${response.status}`); // Backticks añadidos
+      return response.json();
+    })
+    .then(products => {
+      renderProducts(products);
+      initProductHandlers();
+    })
+    .catch(error => {
+      console.error('Error cargando productos:', error);
+      showError('No pudimos cargar los productos. Intenta recargar la página.');
     // Optional: Use static placeholder data
     const placeholderProducts = [
       {
