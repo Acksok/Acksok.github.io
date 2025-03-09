@@ -62,6 +62,7 @@ document.addEventListener('DOMContentLoaded', function() {
        </div>
      `).join('');
 
+
      initLazyLoading();
    }
 
