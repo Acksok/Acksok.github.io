@@ -7,28 +7,25 @@ document.addEventListener('DOMContentLoaded', function() {
   const menuTitle = document.getElementById('menu-title');
 
   // Cargar productos
-  function loadProducts() {
-    fetch('https://acksok.github.io/products', {
-      method: 'GET',
-      mode: 'no-cors',
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-      }
-    })
-    .then(response => {
-      if (!response.ok) throw new Error(`Error HTTP! Estado: ${response.status}`);
-      return response.json();
-    })
-    .then(products => {
-      renderProducts(products);
-      initProductHandlers();
-    })
-    .catch(error => {
-      console.error('Error cargando productos:', error);
-      showError('No pudimos cargar los productos. Intenta recargar la página.');
-    });
+fetch('https://acksok.github.io/products', {
+  method: 'GET',
+  headers: {
+    'Content-Type': 'application/json',
+    'Accept': 'application/json'
   }
+})
+.then(response => {
+  if (!response.ok) throw new Error(`Error HTTP! Estado: ${response.status}`);
+  return response.json();
+})
+.then(products => {
+  renderProducts(products);
+  initProductHandlers();
+})
+.catch(error => {
+  console.error('Error cargando productos:', error);
+  showError('No pudimos cargar los productos. Intenta recargar la página.');
+});
 
   // Renderizar productos
   function renderProducts(products) {
