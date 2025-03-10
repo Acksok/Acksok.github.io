@@ -1,21 +1,18 @@
 document.addEventListener('DOMContentLoaded', function() {
-  // Elementos del menú lateral
   const sideMenu = document.getElementById('side-menu');
   const closeMenuBtn = document.getElementById('close-menu');
   const menuIngredients = document.getElementById('menu-ingredients');
   const menuPrice = document.getElementById('menu-price');
   const menuTitle = document.getElementById('menu-title');
 
-  // Configuración de imágenes
-  const placeholderImage = 'placeholder.webp'; // Ruta de tu imagen de reserva
-  const baseImagePath = '/images/ID'; // Ruta base de las imágenes
+  const placeholderImage = 'placeholder.webp'; // Imagen de reserva
+  const baseImagePath = '/images/ID'; // Ruta base de imágenes
 
-  // Determinar la URL base del API según el dominio actual
+  // Detecta si estás en localhost o en producción
   const apiBaseUrl = window.location.hostname === 'acksok.github.io'
-    ? 'https://acksok.github.io'
+    ? 'https://tu-api-en-produccion.com'  // Cambia esto por la URL correcta
     : 'http://localhost:3000';
 
-  // Cargar productos
   function loadProducts() {
     fetch(`${apiBaseUrl}/products`, {
       method: 'GET',
@@ -39,7 +36,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
-  // Renderizar productos con gestión de imágenes
   function renderProducts(products) {
     const container = document.querySelector('.productos-container');
     if (!container) {
@@ -70,18 +66,16 @@ document.addEventListener('DOMContentLoaded', function() {
     initLazyLoading();
   }
 
-  // Manejo de errores de imágenes mejorado
   window.handleImageError = function(imgElement) {
     const container = imgElement.closest('.producto');
     const fallbackImage = container.dataset.image ? placeholderImage : 'error-image.webp';
 
-    imgElement.onerror = null; // Prevenir bucles infinitos
+    imgElement.onerror = null;
     imgElement.src = fallbackImage;
     imgElement.style.opacity = '0.7';
     imgElement.title = 'Imagen no disponible';
   };
 
-  // Lazy loading de imágenes optimizado
   function initLazyLoading() {
     const lazyImages = document.querySelectorAll('.lazy-image:not(.loaded)');
     const observer = new IntersectionObserver((entries, observer) => {
@@ -101,7 +95,6 @@ document.addEventListener('DOMContentLoaded', function() {
     lazyImages.forEach(img => observer.observe(img));
   }
 
-  // Manejadores de eventos para productos
   function initProductHandlers() {
     document.querySelectorAll('.producto').forEach(producto => {
       producto.addEventListener('click', function() {
@@ -116,26 +109,22 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
-  // Actualizar contenido del menú lateral
   function updateSideMenu({ title, ingredients, price }) {
     menuTitle.textContent = title;
     menuIngredients.innerHTML = `<strong>Ingredientes:</strong> ${ingredients}`;
     menuPrice.innerHTML = `<strong>Precio:</strong> $${price}`;
   }
 
-  // Controlar visibilidad del menú lateral
   function toggleSideMenu(show = true) {
     sideMenu.classList.toggle('open', show);
   }
 
-  // Cerrar menú al hacer clic fuera
   function handleOutsideClick(e) {
     if (!sideMenu.contains(e.target) && !e.target.closest('.producto')) {
       toggleSideMenu(false);
     }
   }
 
-  // Mostrar mensajes de error
   function showError(message) {
     const errorContainer = document.createElement('div');
     errorContainer.className = 'error-message';
@@ -147,13 +136,11 @@ document.addEventListener('DOMContentLoaded', function() {
     }, 5000);
   }
 
-  // Event Listeners
   closeMenuBtn.addEventListener('click', () => toggleSideMenu(false));
   document.addEventListener('click', handleOutsideClick);
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') toggleSideMenu(false);
   });
 
-  // Iniciar carga de productos
   loadProducts();
 });
