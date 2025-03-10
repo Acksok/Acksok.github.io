@@ -44,15 +44,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
     container.innerHTML = products.map(product => {
       const imagePath = `${baseImagePath}${product.id}.jpg`;
-      
+
       return `
-        <div class="producto" 
-             data-ingredients="${product.ingredients.join(', ')}" 
+        <div class="producto"
+             data-ingredients="${product.ingredients.join(', ')}"
              data-price="${product.price.toFixed(2)}"
              data-image="${imagePath}">
           <img src="${placeholderImage}"
-               data-src="${imagePath}" 
-               alt="${product.name}" 
+               data-src="${imagePath}"
+               alt="${product.name}"
                loading="lazy"
                class="lazy-image"
                onerror="handleImageError(this)">
@@ -69,12 +69,12 @@ document.addEventListener('DOMContentLoaded', function() {
   window.handleImageError = function(imgElement) {
     const container = imgElement.closest('.producto');
     const fallbackImage = container.dataset.image ? placeholderImage : 'error-image.webp';
-    
+
     imgElement.onerror = null; // Prevenir bucles infinitos
     imgElement.src = fallbackImage;
     imgElement.style.opacity = '0.7';
     imgElement.title = 'Imagen no disponible';
-  }
+  };
 
   // Lazy loading de imágenes optimizado
   function initLazyLoading() {
@@ -88,14 +88,13 @@ document.addEventListener('DOMContentLoaded', function() {
           observer.unobserve(img);
         }
       });
-    }, { 
+    }, {
       rootMargin: '200px 0px',
       threshold: 0.1
     });
 
     lazyImages.forEach(img => observer.observe(img));
   }
-
 
   // Manejadores de eventos para productos
   function initProductHandlers() {
@@ -137,7 +136,7 @@ document.addEventListener('DOMContentLoaded', function() {
     errorContainer.className = 'error-message';
     errorContainer.textContent = message;
     document.body.prepend(errorContainer);
-    
+
     setTimeout(() => {
       errorContainer.remove();
     }, 5000);
