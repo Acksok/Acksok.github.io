@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Detecta si estás en localhost o en producción
   const apiBaseUrl = window.location.hostname === 'acksok.github.io'
-    ? 'https://tu-api-en-produccion.com'  // Cambia esto por la URL correcta
+    ? 'https://acksok.github.io'  // Cambia esto por la URL correcta
     : 'http://localhost:3000';
 
   function loadProducts() {
@@ -136,11 +136,45 @@ document.addEventListener('DOMContentLoaded', function() {
     }, 5000);
   }
 
-  closeMenuBtn.addEventListener('click', () => toggleSideMenu(false));
+  // Event Listeners
+  if (closeMenuBtn) {
+    closeMenuBtn.addEventListener('click', () => toggleSideMenu(false));
+  }
+
   document.addEventListener('click', handleOutsideClick);
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') toggleSideMenu(false);
   });
 
-  loadProducts();
-});
+  if (botonCotizar) {
+     botonCotizar.addEventListener('click', () => {
+       const phone = '5528491408';
+       const messageData = {
+         product: menuTitle?.textContent || '',
+         ingredients: Array.from(menuIngredients?.children || [])
+                        .map(item => item.textContent.trim()),
+         price: menuPrice?.textContent || ''
+       };
+
+       const message = `
+ 🚀 *Cotización Quesos Sagrados*
+
+ *Producto:* ${messageData.product}
+
+
+ *Ingredientes:*
+ ${messageData.ingredients.map(i => `• ${i}`).join('\n')}
+
+ *Precio:* ${messageData.price}
+
+ ¡Hola! Estoy interesado en esta tabla, ¿podrían ayudarme con mi pedido?
+       `.trim();
+
+       window.open(`https://wa.me/${phone}?text=${encodeURIComponent(message)}`, '_blank');
+     });
+   }
+
+   // Iniciar carga de productos
+   loadProducts();
+
+ });
