@@ -1,8 +1,23 @@
 {
-  "dependencies": {
-    "again": "^0.0.1",
-    "compression": "^1.8.0",
-    "cors": "^2.8.5",
-    "express": "^4.21.2"
-  }
+  "name": "paginaquesos-frontend",
+  "version": "1.0.0",
+  "description": "Frontend de Quesos Sagrados (Despliegue estático)",
+  "scripts": {
+    "deploy": "gh-pages -d dist",
+    "predeploy": "npm run build",
+    "build": "mkdirp dist && copyfiles -u 1 \"src/**/*\" dist/",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "copyfiles": "^2.4.1",
+    "gh-pages": "^6.3.0",
+    "mkdirp": "^3.0.1"
+  },
+  "keywords": [
+    "quesos",
+    "gourmet",
+    "alimentos"
+  ],
+  "author": "Tu Nombre",
+  "license": "ISC"
 }
