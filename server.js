@@ -1,4 +1,4 @@
-const express = require('express');
+ const express = require('express');
 const path = require('path');
 const compression = require('compression');
 const cors = require('cors'); // ← Añade esta línea

@@ -6,6 +6,10 @@ document.addEventListener('DOMContentLoaded', function() {
   const menuPrice = document.getElementById('menu-price');
   const menuTitle = document.getElementById('menu-title');
 
+  // Configuración de imágenes
+  const placeholderImage = 'placeholder.webp'; // Ruta de tu imagen de reserva
+  const baseImagePath = '/images/ID'; // Ruta base de las imágenes
+
   // Cargar productos
   function loadProducts() {
     fetch('http://localhost:3000/products', {
@@ -30,7 +34,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
-  // Renderizar productos
+  // Renderizar productos con gestión de imágenes
   function renderProducts(products) {
     const container = document.querySelector('.productos-container');
     if (!container) {
@@ -38,38 +42,43 @@ document.addEventListener('DOMContentLoaded', function() {
       return;
     }
 
-    const placeholderSVG = 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxIiBoZWlnaHQ9IjEiIHN0eWxlPSJiYWNrZ3JvdW5kLWNvbG9yOiNmNWY1ZjUiPjwvc3ZnPg==';
-    
-    container.innerHTML = products.map(product => `
-      <div class="producto" 
-           data-ingredients="${product.ingredients.join(', ')}" 
-           data-price="${product.price.toFixed(2)}">
-        <img src="${placeholderSVG}"
-             data-src="/assets/images/${product.image}" 
-             alt="${product.name}" 
-             loading="lazy"
-             class="lazy-image"
-             onerror="window.handleImageError(this)">
-        <h3>${product.name}</h3>
-        <p>${product.description}</p>
-      </div>
-    `).join('');
+    container.innerHTML = products.map(product => {
+      const imagePath = `${baseImagePath}${product.id}.jpg`;
+      
+      return `
+        <div class="producto" 
+             data-ingredients="${product.ingredients.join(', ')}" 
+             data-price="${product.price.toFixed(2)}"
+             data-image="${imagePath}">
+          <img src="${placeholderImage}"
+               data-src="${imagePath}" 
+               alt="${product.name}" 
+               loading="lazy"
+               class="lazy-image"
+               onerror="handleImageError(this)">
+          <h3>${product.name}</h3>
+          <p>${product.description}</p>
+        </div>
+      `;
+    }).join('');
 
     initLazyLoading();
   }
 
-  // Manejo de errores de imágenes
+  // Manejo de errores de imágenes mejorado
   window.handleImageError = function(imgElement) {
-    const errorSVG = 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iNDAwIiB2aWV3Qm94PSIwIDAgNDAwIDQwMCI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0iI2Y1ZjVmNSIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LXNpemU9IjE2IiBmb250LWZhbWlseT0iQXJpYWwiIGZpbGw9IiM2NjYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkltYWdlbiBubyBlbmNvbnRyYWRhPC90ZXh0Pjwvc3ZnPg==';
-    imgElement.onerror = null;
-    imgElement.src = errorSVG;
-    imgElement.style.opacity = '1';
-    imgElement.style.backgroundColor = 'transparent';
+    const container = imgElement.closest('.producto');
+    const fallbackImage = container.dataset.image ? placeholderImage : 'error-image.webp';
+    
+    imgElement.onerror = null; // Prevenir bucles infinitos
+    imgElement.src = fallbackImage;
+    imgElement.style.opacity = '0.7';
+    imgElement.title = 'Imagen no disponible';
   }
 
-  // Lazy loading de imágenes
+  // Lazy loading de imágenes optimizado
   function initLazyLoading() {
-    const lazyImages = document.querySelectorAll('.lazy-image');
+    const lazyImages = document.querySelectorAll('.lazy-image:not(.loaded)');
     const observer = new IntersectionObserver((entries, observer) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -79,10 +88,14 @@ document.addEventListener('DOMContentLoaded', function() {
           observer.unobserve(img);
         }
       });
-    }, { rootMargin: '100px 0px' });
+    }, { 
+      rootMargin: '200px 0px',
+      threshold: 0.1
+    });
 
     lazyImages.forEach(img => observer.observe(img));
   }
+
 
   // Manejadores de eventos para productos
   function initProductHandlers() {
