@@ -10,9 +10,14 @@ document.addEventListener('DOMContentLoaded', function() {
   const placeholderImage = 'placeholder.webp'; // Ruta de tu imagen de reserva
   const baseImagePath = '/images/ID'; // Ruta base de las imágenes
 
+  // Determinar la URL base del API según el dominio actual
+  const apiBaseUrl = window.location.hostname === 'acksok.github.io'
+    ? 'https://acksok.github.io'
+    : 'http://localhost:3000';
+
   // Cargar productos
   function loadProducts() {
-    fetch('http://localhost:3000/products', {
+    fetch(`${apiBaseUrl}/products`, {
       method: 'GET',
       mode: 'cors',
       headers: {
