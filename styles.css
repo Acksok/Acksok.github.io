@@ -40,35 +40,34 @@ body {
 body::-webkit-scrollbar {
   display: none;
 }
-/* Estilos para el contenedor de redes sociales */
-/* Ajustes generales del contenedor de redes sociales */
-.redes-sociales {
-    text-align: center;
-    margin-top: 10px;
-}
-
-/* Ajuste de la lista para que los iconos se acomoden bien */
-.redes-sociales ul {
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    gap: 15px; /* Espaciado entre iconos */
-    padding: 0;
-    flex-wrap: wrap; /* Permite que los iconos se acomoden en varias líneas si es necesario */
-}
-
 /* Ajustes de los iconos */
 .redes-sociales img {
-    width: 32px; /* Tamaño del icono */
-    height: 32px;
+    width: 24px; /* Tamaño más pequeño en móviles */
+    height: 24px;
     transition: transform 0.3s ease-in-out;
 }
 
 /* Efecto de hover */
 .redes-sociales a:hover img {
-    transform: scale(1.2);
+    transform: scale(1.1);
 }
 
+/* RESPONSIVE: Ajustes en pantallas pequeñas */
+@media screen and (max-width: 768px) {
+    .redes-sociales {
+        position: absolute;
+        right: 15px; /* Mantiene los iconos dentro del header */
+        top: 50%;
+        transform: translateY(-50%);
+        display: flex;
+        gap: 8px;
+    }
+
+    .redes-sociales img {
+        width: 20px; /* Reduce más el tamaño en móviles */
+        height: 20px;
+    }
+}
 /* ------------------------------------------------------- */
 /*     🔹 RESPONSIVE: Ajustes para teléfonos pequeños 🔹   */
 /* ------------------------------------------------------- */
@@ -89,12 +88,12 @@ body::-webkit-scrollbar {
 /* ------------------------------------------------------- */
 
 header {
-  background: #0c0c0c;
-  padding: 20px 10%;     /* Puedes ajustar a 10px 5% si prefieres */
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid #ddd; /* Se unifica con el estilo base */
+    background: #0c0c0c;
+    display: flex;
+    justify-content: space-between; /* Distribuye los elementos */
+    align-items: center;
+    padding: 10px 20px;
+    position: relative;
 }
 
 header h1 {
