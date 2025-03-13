@@ -39,30 +39,48 @@ body::-webkit-scrollbar {
   display: none;
 }
 /* Estilos para el contenedor de redes sociales */
+/* Ajustes generales del contenedor de redes sociales */
 .redes-sociales {
     text-align: center;
     margin-top: 10px;
 }
 
+/* Ajuste de la lista para que los iconos se acomoden bien */
 .redes-sociales ul {
     list-style: none;
     display: flex;
     justify-content: center;
     gap: 15px; /* Espaciado entre iconos */
     padding: 0;
+    flex-wrap: wrap; /* Permite que los iconos se acomoden en varias líneas si es necesario */
 }
 
-/* Ajustes de los íconos */
+/* Ajustes de los iconos */
 .redes-sociales img {
     width: 32px; /* Tamaño del icono */
     height: 32px;
-    transition: transform 0.3s ease-in-out; /* Efecto al pasar el mouse */
+    transition: transform 0.3s ease-in-out;
 }
 
-/* Efecto de agrandado al pasar el mouse */
+/* Efecto de hover */
 .redes-sociales a:hover img {
     transform: scale(1.2);
 }
+
+/* ------------------------------------------------------- */
+/*     🔹 RESPONSIVE: Ajustes para teléfonos pequeños 🔹   */
+/* ------------------------------------------------------- */
+@media screen and (max-width: 480px) {
+    .redes-sociales ul {
+        gap: 10px; /* Reduce el espacio entre iconos */
+    }
+
+    .redes-sociales img {
+        width: 28px; /* Hace los iconos más pequeños */
+        height: 28px;
+    }
+}
+
 
 /* ------------------------------------------------------- */
 /*                   ENCABEZADO Y NAV                      */
