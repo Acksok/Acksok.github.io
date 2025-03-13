@@ -4,12 +4,11 @@ document.addEventListener('DOMContentLoaded', function() {
   const menuIngredients = document.getElementById('menu-ingredients');
   const menuPrice = document.getElementById('menu-price');
   const menuTitle = document.getElementById('menu-title');
+  const menuFullDescription = document.getElementById('menu-full-description'); // Nuevo campo para la descripción completa
+  const botonCotizar = document.getElementById('botonCotizar');
 
   const placeholderImage = 'placeholder.webp'; // Imagen de reserva
   const baseImagePath = '/images/ID'; // Ruta base de imágenes
-
-  // Detecta si estás en localhost o en producción
-
 
   function loadProducts() {
     fetch(`products.json`, {
@@ -34,35 +33,39 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
-  function renderProducts(products) {
+function renderProducts(products) {
     const container = document.querySelector('.productos-container');
     if (!container) {
-      console.error('Contenedor de productos no encontrado');
-      return;
+        console.error('Contenedor de productos no encontrado');
+        return;
     }
 
     container.innerHTML = products.map(product => {
-      const imagePath = `${baseImagePath}${product.id}.jpg`;
+        const imagePath = `${baseImagePath}${product.id}.jpg`;
 
-      return `
-        <div class="producto"
-             data-ingredients="${product.ingredients.join(', ')}"
-             data-price="${product.price.toFixed(2)}"
-             data-image="${imagePath}">
-          <img src="${placeholderImage}"
-               data-src="${imagePath}"
-               alt="${product.name}"
-               loading="lazy"
-               class="lazy-image"
-               onerror="handleImageError(this)">
-          <h3>${product.name}</h3>
-          <p>${product.description}</p>
-        </div>
-      `;
+        return `
+            <div class="producto"
+                 data-title="${product.name}"
+                 data-description="${product.description}"
+                 data-ingredients='${JSON.stringify(product.ingredients)}'
+                 data-price="${product.price.toFixed(2)}"
+                 data-image="${imagePath}">
+              <img src="${placeholderImage}"
+                   data-src="${imagePath}"
+                   alt="${product.name}"
+                   loading="lazy"
+                   class="lazy-image"
+                   onerror="handleImageError(this)">
+              <h3>${product.name}</h3>
+              <p>${product.description}</p>
+            </div>
+        `;
     }).join('');
 
     initLazyLoading();
-  }
+}
+
+
 
   window.handleImageError = function(imgElement) {
     const container = imgElement.closest('.producto');
@@ -97,7 +100,8 @@ document.addEventListener('DOMContentLoaded', function() {
     document.querySelectorAll('.producto').forEach(producto => {
       producto.addEventListener('click', function() {
         const productData = {
-          title: this.querySelector('h3').textContent,
+          title: this.dataset.title,
+          description: this.dataset.description, // Agregamos la descripción completa
           ingredients: this.dataset.ingredients,
           price: this.dataset.price
         };
@@ -107,11 +111,24 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
-  function updateSideMenu({ title, ingredients, price }) {
-    menuTitle.textContent = title;
-    menuIngredients.innerHTML = `<strong>Ingredientes:</strong> ${ingredients}`;
-    menuPrice.innerHTML = `<strong>Precio:</strong> $${price}`;
+  function updateSideMenu({ title, description, ingredients, price }) {
+      menuTitle.textContent = title;
+      menuFullDescription.innerHTML = `<strong>Descripción:</strong> ${description}`;
+
+      // Formatear ingredientes por categorías
+      let ingredientsHTML = "";
+      const ingredientsObj = JSON.parse(ingredients); // Convertir texto a objeto
+
+      for (let category in ingredientsObj) {
+          ingredientsHTML += `<strong>${category.charAt(0).toUpperCase() + category.slice(1)}:</strong><br>`;
+          ingredientsHTML += `${ingredientsObj[category].map(item => `• ${item}`).join('<br>')}<br><br>`;
+      }
+
+      menuIngredients.innerHTML = ingredientsHTML;
+      menuPrice.innerHTML = `<strong>Precio:</strong> $${price}`;
   }
+
+
 
   function toggleSideMenu(show = true) {
     sideMenu.classList.toggle('open', show);
@@ -145,20 +162,22 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
   if (botonCotizar) {
-     botonCotizar.addEventListener('click', () => {
-       const phone = '5528491408';
-       const messageData = {
-         product: menuTitle?.textContent || '',
-         ingredients: Array.from(menuIngredients?.children || [])
+    botonCotizar.addEventListener('click', () => {
+      const phone = '5528491408';
+      const messageData = {
+        product: menuTitle?.textContent || '',
+        description: menuFullDescription?.textContent || '', // Agregamos la descripción
+        ingredients: Array.from(menuIngredients?.children || [])
                         .map(item => item.textContent.trim()),
-         price: menuPrice?.textContent || ''
-       };
+        price: menuPrice?.textContent || ''
+      };
 
-       const message = `
+      const message = `
  🚀 *Cotización Quesos Sagrados*
 
  *Producto:* ${messageData.product}
 
+ *Descripción:* ${messageData.description}
 
  *Ingredientes:*
  ${messageData.ingredients.map(i => `• ${i}`).join('\n')}
@@ -166,13 +185,12 @@ document.addEventListener('DOMContentLoaded', function() {
  *Precio:* ${messageData.price}
 
  ¡Hola! Estoy interesado en esta tabla, ¿podrían ayudarme con mi pedido?
-       `.trim();
+      `.trim();
 
-       window.open(`https://wa.me/${phone}?text=${encodeURIComponent(message)}`, '_blank');
-     });
-   }
+      window.open(`https://wa.me/${phone}?text=${encodeURIComponent(message)}`, '_blank');
+    });
+  }
 
-   // Iniciar carga de productos
-   loadProducts();
-
- });
+  // Iniciar carga de productos
+  loadProducts();
+});

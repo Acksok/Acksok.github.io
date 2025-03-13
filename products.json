@@ -2,112 +2,99 @@
   {
     "id": 1,
     "name": "Tabla Brie Clásica",
-    "description": "Con un toque especial de la región. Con ingredientes 100% naturales.",
-    "image": "tabla2.jpg",
-    "ingredients": [
-      "Sal marina",
-      "Hierbas provenzales",
-      "Cuajo",
-      "Hierbas provenzales",
-      "Chile"
-    ],
+    "description": "Una tabla clásica con una selección de quesos Brie, frutos secos y un toque de miel.",
+    "image": "tabla1.jpg",
+    "ingredients": {
+      "quesos": ["Queso Brie"],
+      "carnes": ["Salami", "Jamón ibérico"],
+      "frutos_secos": ["Almendras", "Nueces"],
+      "panes": ["Galletas saladas", "Pan de masa madre"],
+      "acompañamientos": ["Miel", "Higos secos"]
+    },
     "price": 43.49
   },
   {
     "id": 2,
     "name": "Tabla Azul Especial",
-    "description": "Elaborado con técnicas tradicionales. Selección premium.",
+    "description": "Un deleite para los amantes del queso azul, acompañado de frutos secos y mermelada.",
     "image": "tabla2.jpg",
-    "ingredients": [
-      "Ajo",
-      "Hierbas provenzales",
-      "Tomillo",
-      "Hierbas provenzales",
-      "Miel",
-      "Ajo",
-      "Leche de cabra"
-    ],
+    "ingredients": {
+      "quesos": ["Queso Azul"],
+      "carnes": ["Pastrami"],
+      "frutos_secos": ["Avellanas", "Pistachos"],
+      "panes": ["Tostadas de centeno"],
+      "acompañamientos": ["Mermelada de higo", "Uvas"]
+    },
     "price": 41.98
   },
   {
     "id": 3,
     "name": "Tabla Camembert Gourmet",
-    "description": "Madurado por expertos. Selección premium.",
-    "image": "tabla2.jpg",
-    "ingredients": [
-      "Cuajo",
-      "Ajo",
-      "peperonni",
-      "jamon serrano"
-    ],
+    "description": "Queso Camembert madurado acompañado de prosciutto y una selección de aceitunas.",
+    "image": "tabla3.jpg",
+    "ingredients": {
+      "quesos": ["Queso Camembert"],
+      "carnes": ["Prosciutto"],
+      "frutos_secos": ["Nueces"],
+      "panes": ["Baguette artesanal"],
+      "acompañamientos": ["Aceitunas verdes", "Tomates secos"]
+    },
     "price": 26.88
   },
   {
     "id": 4,
-    "name": "Tabla Azul Especial",
-    "description": "Selección premium. Exquisito sabor que perdura.",
-    "image": "tabla3.jpg",
-    "ingredients": [
-      "Ajo",
-      "Leche de vaca",
-      "Sal marina",
-      "jamon"
-    ],
-    "price": 33.54
+    "name": "Tabla Mixta Suprema",
+    "description": "La combinación perfecta de quesos, carnes y acompañamientos para una experiencia única.",
+    "image": "tabla4.jpg",
+    "ingredients": {
+      "quesos": ["Queso Manchego", "Queso Gouda"],
+      "carnes": ["Jamón serrano", "Chorizo español"],
+      "frutos_secos": ["Almendras", "Pistachos"],
+      "panes": ["Grisines", "Pan rústico"],
+      "acompañamientos": ["Miel", "Aceitunas negras", "Dátiles"]
+    },
+    "price": 38.81
   },
   {
     "id": 5,
     "name": "Tabla Camembert Premium",
-    "description": "Elaborado con técnicas tradicionales. Exquisito sabor que perdura.",
-    "image": "tabla3.jpg",
-    "ingredients": [
-      "Pimienta negra",
-      "Cuajo",
-      "Cuajo"
-    ],
-    "price": 38.81
-  },
-  {
-    "id": 6,
-    "name": "Tabla Camembert Premium",
-    "description": "Exquisito sabor que perdura. Selección premium.",
+    "description": "Un sabor sofisticado con queso Camembert trufado, jamón ibérico y frutos secos.",
     "image": "tabla5.jpg",
-    "ingredients": [
-      "Cuajo",
-      "Hierbas provenzales",
-      "Tomillo",
-      "Ajo"
-    ],
+    "ingredients": {
+      "quesos": ["Queso Camembert Trufado"],
+      "carnes": ["Jamón ibérico"],
+      "frutos_secos": ["Nueces", "Avellanas"],
+      "panes": ["Tostadas de trigo"],
+      "acompañamientos": ["Mermelada de frutos rojos"]
+    },
     "price": 43.41
   },
   {
-    "id": 7,
+    "id": 6,
     "name": "Tabla Mozzarella Clásica",
-    "description": "Con un toque especial de la región. Selección premium.",
-    "image": "tabla4.jpg",
-    "ingredients": [
-      "Sal marina",
-      "Chile",
-      "Miel",
-      "Trufa",
-      "Chile",
-      "Leche de cabra",
-      "Trufa"
-    ],
+    "description": "Fresca y ligera con mozzarella de búfala, tomates cherry y albahaca.",
+    "image": "tabla6.jpg",
+    "ingredients": {
+      "quesos": ["Mozzarella de búfala"],
+      "carnes": ["Bresaola"],
+      "frutos_secos": ["Piñones"],
+      "panes": ["Focaccia"],
+      "acompañamientos": ["Tomates cherry", "Albahaca fresca"]
+    },
     "price": 25.51
   },
   {
-    "id": 8,
+    "id": 7,
     "name": "Tabla Brie Gourmet",
-    "description": "Con ingredientes 100% naturales. Elaborado con técnicas tradicionales.",
-    "image": "tabla5.jpg",
-    "ingredients": [
-      "Hierbas provenzales",
-      "Cuajo",
-      "Chile",
-      "Ajo",
-      "Ajo"
-    ],
+    "description": "Un equilibrio perfecto entre queso Brie, carnes curadas y un toque dulce de miel.",
+    "image": "tabla7.jpg",
+    "ingredients": {
+      "quesos": ["Queso Brie"],
+      "carnes": ["Salami", "Jamón serrano"],
+      "frutos_secos": ["Avellanas", "Nueces"],
+      "panes": ["Galletas saladas"],
+      "acompañamientos": ["Miel", "Higos secos"]
+    },
     "price": 40.84
   }
 ]
