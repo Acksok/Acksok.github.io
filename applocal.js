@@ -8,6 +8,8 @@ document.addEventListener('DOMContentLoaded', function() {
   const placeholderImage = 'placeholder.webp'; // Imagen de reserva
   const baseImagePath = '/images/ID'; // Ruta base de imágenes
 
+  // Detecta si estás en localhost o en producción
+
 
   function loadProducts() {
     fetch(`products.json`, {
