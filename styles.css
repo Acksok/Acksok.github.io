@@ -1,7 +1,9 @@
 /* ------------------------------------------------------- */
 /*                     RESET Y BASE                        */
 /* ------------------------------------------------------- */
-
+html {
+  overflow-y: scroll; /* Siempre mostrar la barra de scroll aunque no sea necesaria */
+}
 /* Reset de estilos */
 * {
   margin: 0;
@@ -30,7 +32,7 @@ body {
   background: #ebebeb; /* Se unifica el color de fondo */
   color: #333;
   line-height: 1.6;
-   overflow: auto;
+   overflow: visible;
     -ms-overflow-style: none; /* IE y Edge */
     scrollbar-width: none; /* Firefox */
 
