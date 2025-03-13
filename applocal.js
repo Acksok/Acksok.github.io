@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Detecta si estás en localhost o en producción
   const apiBaseUrl = window.location.hostname === 'acksok.github.io'
-    ? 'https://acksok.github.io'  // Cambia esto por la URL correcta
+    ? 'https://acksok.github.io'
     : 'http://localhost:3000';
 
   function loadProducts() {

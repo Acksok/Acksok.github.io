@@ -38,77 +38,128 @@
     .menu-overlay.active {
       display: block;
     }
+
+    /* Estilos para el hero */
+    .hero {
+      text-align: center;
+      padding: 50px 20px;
+    }
+
+    .hero-buttons {
+      margin-top: 20px;
+    }
+
+    .hero-buttons a.btn {
+      text-decoration: none;
+      padding: 10px 20px;
+      margin: 0 10px;
+      border: 1px solid #000;
+      border-radius: 4px;
+    }
+
+    /* Nueva sección exclusiva para el botón Cotizar en vista móvil */
+    .cotizar-mobile {
+      display: none;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .cotizar-mobile a.btn {
+      text-decoration: none;
+      padding: 10px 20px;
+      border: 1px solid #000;
+      border-radius: 4px;
+    }
+
+    /* Media Query para dispositivos móviles */
+    @media screen and (max-width: 768px) {
+      /* Ocultar el botón Cotizar en el hero */
+      .hero-buttons a.cotizar {
+         display: none;
+      }
+      /* Mostrar la sección exclusiva para Cotizar */
+      .cotizar-mobile {
+         display: block;
+      }
+    }
   </style>
 </head>
 <body>
-  <!-- Overlay para el menú -->
-  <div class="menu-overlay"></div>
+<!-- Overlay para el menú -->
+<div class="menu-overlay"></div>
 
-  <header>
-    <nav>
-      <h1>Quesarte</h1>
-      <ul>
-        <li><a href="#productos">Productos</a></li>
-        <li><a href="#filosofia">Filosofía</a></li>
-        <li><a href="#contacto">Contacto</a></li>
-        <li><a href="cotizar.html">Cotizar</a></li>
-      </ul>
-    </nav>
-  </header>
+<header>
+  <nav>
+    <h1>Quesarte</h1>
+    <ul>
+      <li><a href="#productos">Productos</a></li>
+      <li><a href="#filosofia">Filosofía</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+      <li><a href="cotizar.html">Cotizar</a></li>
+    </ul>
+  </nav>
+</header>
 
-  <section class="hero">
-    <h2>Bienvenido a un viaje de sabor y espiritualidad</h2>
-    <p>Descubre nuestras tablas de quesos artesanales, preparadas con ingredientes naturales y un toque de energía positiva.</p>
-    <div class="hero-buttons">
-      <a href="#productos" class="btn">Explora nuestros productos</a>
-      <a href="cotizar.html" class="btn">Cotizar</a>
+<section class="hero">
+  <h2>Bienvenido a un viaje de sabor y espiritualidad</h2>
+  <p>Descubre nuestras tablas de quesos artesanales, preparadas con ingredientes naturales y un toque de energía positiva.</p>
+  <section class="cotizar-mobile">
+    <a href="cotizar.html" class="btn">Cotizar</a>
+  </section>
+  <div class="hero-buttons">
+    <a href="#productos" class="btn">Explora nuestros productos</a>
+    <!-- Botón Cotizar para vista de escritorio -->
+    <a href="cotizar.html" class="btn cotizar">Cotizar</a>
+  </div>
+</section>
+
+<!-- Nueva sección exclusiva para Cotizar en vista móvil -->
+
+
+<main>
+  <section id="productos">
+    <h2>Nuestras Tablas</h2>
+    <div class="productos-container">
+      <!-- Productos se cargarán dinámicamente -->
     </div>
   </section>
 
-  <main>
-    <section id="productos">
-      <h2>Nuestras Tablas</h2>
-      <div class="productos-container">
-        <!-- Productos se cargarán dinámicamente -->
-      </div>
-    </section>
-
-    <section id="filosofia">
-      <div class="philosophy-content">
-        <h2>Nuestra Filosofía</h2>
-        <p>Creemos en la conexión entre la alimentación y el bienestar espiritual. Cada tabla es preparada con dedicación y amor, buscando armonizar cuerpo, mente y espíritu.</p>
-      </div>
-    </section>
-  </main>
-
-  <footer id="contacto">
-    <div class="footer-content">
-      <h2>Contacto</h2>
-      <p>Para consultas y pedidos: <a href="mailto:info@quesossagrados.com">info@quesossagrados.com</a></p>
-      <p class="copyright">&copy; 2025 Quesos Sagrados. Todos los derechos reservados.</p>
+  <section id="filosofia">
+    <div class="philosophy-content">
+      <h2>Nuestra Filosofía</h2>
+      <p>Creemos en la conexión entre la alimentación y el bienestar espiritual. Cada tabla es preparada con dedicación y amor, buscando armonizar cuerpo, mente y espíritu.</p>
     </div>
-  </footer>
+  </section>
+</main>
 
-  <!-- Menú Lateral -->
-  <div id="side-menu">
-    <button id="close-menu">&times;</button>
-    <div class="menu-content">
-      <h2 id="menu-title"></h2>
-      <p id="menu-description"></p>
-      <div class="ingredients-section">
-        <h3>Ingredientes</h3>
-        <div id="menu-ingredients" class="ingredients-list"></div>
+<footer id="contacto">
+  <div class="footer-content">
+    <h2>Contacto</h2>
+    <p>Para consultas y pedidos: <a href="mailto:info@quesossagrados.com">info@quesossagrados.com</a></p>
+    <p class="copyright">&copy; 2025 Quesos Sagrados. Todos los derechos reservados.</p>
+  </div>
+</footer>
+
+<!-- Menú Lateral -->
+<div id="side-menu">
+  <button id="close-menu">&times;</button>
+  <div class="menu-content">
+    <h2 id="menu-title"></h2>
+    <p id="menu-description"></p>
+    <div class="ingredients-section">
+      <h3>Ingredientes</h3>
+      <div id="menu-ingredients" class="ingredients-list"></div>
+    </div>
+    <div class="price-section">
+      <div class="price-tag">
+        <span class="price-label">Precio Total:</span>
+        <span id="menu-price" class="price-amount"></span>
       </div>
-      <div class="price-section">
-        <div class="price-tag">
-          <span class="price-label">Precio Total:</span>
-          <span id="menu-price" class="price-amount"></span>
-        </div>
-        <button id="botonCotizar" class="botonCotizar">Cotizar Ahora</button>
-      </div>
+      <button id="botonCotizar" class="botonCotizar">Cotizar Ahora</button>
     </div>
   </div>
+</div>
 
-  <script type="module" src="applocal.js"></script>
+<script type="module" src="applocal.js"></script>
 </body>
 </html>
