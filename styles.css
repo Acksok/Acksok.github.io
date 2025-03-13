@@ -8,6 +8,19 @@
   padding: 0;
   box-sizing: border-box;
 }
+/* Evita que el logo parezca un enlace */
+.logo {
+  text-decoration: none; /* Quita el subrayado */
+  color: inherit; /* Usa el color del texto por defecto */
+  cursor: pointer; /* Mantiene el cursor normal */
+}
+
+.logo h1 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: bold;
+}
+
 
 /* Estilos base para el body */
 body {
@@ -15,6 +28,38 @@ body {
   background: #ebebeb; /* Se unifica el color de fondo */
   color: #333;
   line-height: 1.6;
+   overflow: auto;
+    -ms-overflow-style: none; /* IE y Edge */
+    scrollbar-width: none; /* Firefox */
+
+}
+body::-webkit-scrollbar {
+  display: none;
+}
+/* Estilos para el contenedor de redes sociales */
+.redes-sociales {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.redes-sociales ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 15px; /* Espaciado entre iconos */
+    padding: 0;
+}
+
+/* Ajustes de los íconos */
+.redes-sociales img {
+    width: 32px; /* Tamaño del icono */
+    height: 32px;
+    transition: transform 0.3s ease-in-out; /* Efecto al pasar el mouse */
+}
+
+/* Efecto de agrandado al pasar el mouse */
+.redes-sociales a:hover img {
+    transform: scale(1.2);
 }
 
 /* ------------------------------------------------------- */
