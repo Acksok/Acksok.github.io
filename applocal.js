@@ -9,10 +9,12 @@ document.addEventListener('DOMContentLoaded', function() {
   const baseImagePath = '/images/ID'; // Ruta base de imágenes
 
   // Detecta si estás en localhost o en producción
-
+  const apiBaseUrl = window.location.hostname === 'acksok.github.io'
+    ? 'https://acksok.github.io'
+    : 'http://localhost:3000';
 
   function loadProducts() {
-    fetch(`/products`, {
+    fetch(`products.json`, {
       method: 'GET',
       mode: 'cors',
       headers: {
