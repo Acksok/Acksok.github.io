@@ -17,14 +17,11 @@ html {
   cursor: pointer; /* Mantiene el cursor normal */
 }
 
-
-
 .logo h1 {
   margin: 0;
   font-size: 24px;
   font-weight: bold;
 }
-
 
 /* Estilos base para el body */
 body {
@@ -32,68 +29,66 @@ body {
   background: #ebebeb; /* Se unifica el color de fondo */
   color: #333;
   line-height: 1.6;
-   overflow: visible;
-    -ms-overflow-style: none; /* IE y Edge */
-    scrollbar-width: none; /* Firefox */
-
+  overflow: visible;
+  -ms-overflow-style: none; /* IE y Edge */
+  scrollbar-width: none; /* Firefox */
 }
 body::-webkit-scrollbar {
   display: none;
 }
 /* Ajustes de los iconos */
 .redes-sociales img {
-    width: 24px; /* Tamaño más pequeño en móviles */
-    height: 24px;
-    transition: transform 0.3s ease-in-out;
+  width: 24px; /* Tamaño más pequeño en móviles */
+  height: 24px;
+  transition: transform 0.3s ease-in-out;
 }
 
 /* Efecto de hover */
 .redes-sociales a:hover img {
-    transform: scale(1.1);
+  transform: scale(1.1);
 }
 
 /* RESPONSIVE: Ajustes en pantallas pequeñas */
 @media screen and (max-width: 768px) {
-    .redes-sociales {
-        position: absolute;
-        right: 15px; /* Mantiene los iconos dentro del header */
-        top: 40%;
-        transform: translateY(-50%);
-        display: flex;
-        gap: 8px;
-    }
+  .redes-sociales {
+    position: absolute;
+    right: 15px; /* Mantiene los iconos dentro del header */
+    top: 40%;
+    transform: translateY(-50%);
+    display: flex;
+    gap: 8px;
+  }
 
-    .redes-sociales img {
-        width: 20px; /* Reduce más el tamaño en móviles */
-        height: 20px;
-    }
+  .redes-sociales img {
+    width: 20px; /* Reduce más el tamaño en móviles */
+    height: 20px;
+  }
 }
 /* ------------------------------------------------------- */
 /*     🔹 RESPONSIVE: Ajustes para teléfonos pequeños 🔹   */
 /* ------------------------------------------------------- */
 @media screen and (max-width: 480px) {
-    .redes-sociales ul {
-        gap: 10px; /* Reduce el espacio entre iconos */
-    }
+  .redes-sociales ul {
+    gap: 10px; /* Reduce el espacio entre iconos */
+  }
 
-    .redes-sociales img {
-        width: 28px; /* Hace los iconos más pequeños */
-        height: 28px;
-    }
+  .redes-sociales img {
+    width: 28px; /* Hace los iconos más pequeños */
+    height: 28px;
+  }
 }
-
 
 /* ------------------------------------------------------- */
 /*                   ENCABEZADO Y NAV                      */
 /* ------------------------------------------------------- */
 
 header {
-    background: #0c0c0c;
-    display: flex;
-    justify-content: space-between; /* Distribuye los elementos */
-    align-items: center;
-    padding: 10px 20px;
-    position: relative;
+  background: #0c0c0c;
+  display: flex;
+  justify-content: space-between; /* Distribuye los elementos */
+  align-items: center;
+  padding: 10px 20px;
+  position: relative;
 }
 
 header h1 {
@@ -113,7 +108,18 @@ nav ul li a {
   color: #d7d0d0;
   font-weight: bold;
   font-size: small;
+}
 
+/* Botón para abrir el menú (nuevo) */
+#open-menu-btn {
+  background-color: #000;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-left: 20px;
 }
 
 /* ------------------------------------------------------- */
@@ -177,11 +183,10 @@ section h2 {
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
-  
 }
 .producto {
   /* Mantenemos la estructura base */
-  background:linear-gradient(145deg, 
+  background: linear-gradient(145deg,
       rgba(90, 23, 43, 0.9),
       rgba(45, 11, 29, 0.9)
     );
@@ -191,8 +196,8 @@ section h2 {
   margin: 20px;
   padding: 20px;
   transition: transform 0.3s ease;
-  
-  /* Nuevo: Contenedor flexible */
+
+  /* Contenedor flexible */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -222,8 +227,6 @@ section h2 {
   transform: translateY(-5px);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
-
-
 
 /* Sección de Filosofía */
 #filosofia {
@@ -288,86 +291,64 @@ footer a:hover {
 .menu-overlay.active {
   display: block;
 }
-.close-menu {
-  position: absolute;
-  top: 15px;
-  left: 15px;
-  background: none;
+
+/* Botón de cerrar menú */
+.close-menu,
+#side-menu button#close-menu {
+  background: transparent;
   border: none;
-  font-size: 24px;
-  color: #6a994e;
+  font-size: 30px;
   cursor: pointer;
+  color: #6a994e;
   transition: transform 0.2s ease;
 }
-
-.close-menu:hover {
+.close-menu:hover,
+#side-menu button#close-menu:hover {
   transform: scale(1.2);
 }
 
+/* Contenido interno del menú */
 .menu-content {
   margin-top: 40px;
-}
-
-.menu-title {
-  color: #6a994e;
-  font-size: 1.8rem;
-  margin-bottom: 20px;
-  padding-bottom: 10px;
-  border-bottom: 2px solid #f5e6d3;
-}
-
-#menu-description {
-  color: #666;
-  margin: 15px 0;
-  font-size: 0.95em;
-  line-height: 1.5;
-}
-
-.ingredients-section {
-  margin: 25px 0;
-}
-
-.ingredient-item {
-  padding: 10px;
-  margin: 8px 0;
-  background: #f8f8f8;
-  border-radius: 8px;
   display: flex;
-  align-items: center;
-  gap: 10px;
+  flex-direction: column;
+  height: 100%;
 }
 
-.price-section {
-  margin-top: 30px;
-  padding: 20px;
-  background: #f5e6d3;
-  border-radius: 10px;
+/* Frase inspiradora */
+#side-menu .menu-frase {
+  font-style: italic;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Enlaces del menú */
+#side-menu .menu-links a {
+  display: block;
+  color: #000;
+  text-decoration: none;
+  font-size: 18px;
+  padding: 10px 0;
+  border-bottom: 1px solid #ddd;
+  transition: background 0.3s;
+}
+#side-menu .menu-links a:hover {
+  background: #f2f2f2;
+}
+
+/* Redes sociales en el menú */
+#side-menu .menu-redes {
+  margin-top: auto;
+  padding-top: 20px;
+  border-top: 1px solid #ddd;
   text-align: center;
 }
-
-#menu-price {
-  font-size: 1.8em;
-  color: #5c4b3a;
-  font-weight: 700;
-  display: block;
-  margin-top: 5px;
+#side-menu .menu-redes a {
+  margin: 0 5px;
 }
-
-#botonCotizar {
-  width: 100%;
-  padding: 15px;
-  margin-top: 20px;
-  background: #25D366;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  font-size: 1.1em;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
-
-#botonCotizar:hover {
-  background: #128C7E;
+#side-menu .menu-redes a img {
+  width: 24px;
+  height: 24px;
 }
 
 /* ------------------------------------------------------- */
@@ -461,7 +442,6 @@ footer a:hover {
   animation: fadeOut 3s forwards;
 }
 
-
 #main-image {
   transition: opacity 0.3s ease;
 }
@@ -484,6 +464,7 @@ footer a:hover {
   90% { opacity: 1; }
   100% { opacity: 0; }
 }
+
 /* Contenedor general para la página de personalización */
 .container {
   display: flex;
@@ -666,6 +647,58 @@ footer a:hover {
 .lazy-image.loaded {
   opacity: 1;
 }
+
+/* ========== Menú Lateral Principal ========== */
+#nav-menu {
+  position: fixed;
+  top: 0;
+  right: -300px;       /* inicia oculto a la derecha */
+  width: 300px;
+  height: 100%;
+  background: #fff;
+  box-shadow: -4px 0 15px rgba(0,0,0,0.1);
+  transition: right 0.3s ease-in-out;
+  z-index: 1000;
+  padding: 25px;
+}
+#nav-menu.open {
+  right: 0; /* al agregar la clase "open", se desplaza a la vista */
+}
+#close-nav-menu {
+  background: transparent;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+}
+#nav-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0 0;
+}
+#nav-menu ul li {
+  margin-bottom: 15px;
+}
+#nav-menu ul li a {
+  font-size: 1.2rem;
+  color: #000;
+  text-decoration: none;
+}
+
+/* ========== Overlay para oscurecer el fondo ========== */
+.menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  z-index: 999;
+  display: none; /* se mostrará con .active */
+}
+.menu-overlay.active {
+  display: block;
+}
+
 .cotizar-btn {
   background-color: #25D366;
   color: white;

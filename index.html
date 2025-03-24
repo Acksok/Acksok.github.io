@@ -6,7 +6,9 @@
   <title>Quesos Sagrados - Tablas Holísticas</title>
   <link rel="stylesheet" href="styles.css">
   <style>
-    /* Estilos temporales del menú lateral */
+    /* ===============================
+       Menú Lateral de Productos (existente)
+    ================================ */
     #side-menu {
       position: fixed;
       top: 0;
@@ -19,11 +21,13 @@
       z-index: 1000;
       padding: 25px;
     }
-
     #side-menu.open {
       right: 0;
     }
 
+    /* ===============================
+       Overlay para ambos menús
+    ================================ */
     .menu-overlay {
       position: fixed;
       top: 0;
@@ -34,21 +38,20 @@
       z-index: 999;
       display: none;
     }
-
     .menu-overlay.active {
       display: block;
     }
 
-    /* Estilos para el hero */
+    /* ===============================
+       Estilos para el Hero
+    ================================ */
     .hero {
       text-align: center;
       padding: 50px 20px;
     }
-
     .hero-buttons {
       margin-top: 20px;
     }
-
     .hero-buttons a.btn {
       text-decoration: none;
       padding: 10px 20px;
@@ -56,48 +59,159 @@
       border: 1px solid #000;
       border-radius: 4px;
     }
-
-    /* Nueva sección exclusiva para el botón Cotizar en vista móvil */
+    /* Botón Cotizar en móvil */
     .cotizar-mobile {
       display: none;
       text-align: center;
       padding: 20px;
     }
-
     .cotizar-mobile a.btn {
       text-decoration: none;
       padding: 10px 20px;
       border: 1px solid #000;
       border-radius: 4px;
     }
-
-    /* Media Query para dispositivos móviles */
     @media screen and (max-width: 768px) {
       /* Ocultar el botón Cotizar en el hero */
       .hero-buttons a.cotizar {
-         display: none;
+        display: none;
       }
       /* Mostrar la sección exclusiva para Cotizar */
       .cotizar-mobile {
-         display: block;
+        display: block;
       }
+    }
+
+    /* ===============================
+       Header y Botón de Menú (Hamburguesa)
+       Ubicado en esquina superior derecha
+    ================================ */
+    header {
+      position: relative; /* Para que el botón se posicione relativo al header */
+      min-height: 80px;   /* Ajusta según tu diseño */
+    }
+    header nav {
+      position: relative;
+      /* Si deseas alinear el logo a la izquierda, puedes usar display flex:
+         display: flex;
+         align-items: center;
+         padding: 10px 20px; */
+    }
+    .logo img {
+      /* Ajusta si deseas un tamaño específico */
+      width: 250px;
+      height: 120px;
+    }
+    /* Botón del menú en esquina superior derecha */
+    #menu-toggle-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+    }
+    #menu-toggle-btn img {
+      width: 30px;
+      height: 30px;
+    }
+
+    /* ===============================
+       Menú Lateral Principal (Fondo negro)
+    ================================ */
+    #nav-menu {
+      position: fixed;
+      top: 0;
+      right: -300px;
+      width: 300px;
+      height: 100%;
+      background: #000; /* Fondo negro */
+      color: #fff;      /* Texto blanco */
+      box-shadow: -4px 0 15px rgba(0,0,0,0.1);
+      transition: right 0.3s ease-in-out;
+      z-index: 1000;
+      padding: 25px;
+    }
+    #nav-menu.open {
+      right: 0;
+    }
+    #close-nav-menu {
+      background: transparent;
+      border: none;
+      font-size: 2rem;
+      cursor: pointer;
+      color: #fff;
+    }
+    #nav-menu ul {
+      list-style: none;
+      padding: 0;
+      margin: 70px 0 0;
+      text-align: center;
+    }
+    #nav-menu ul li {
+      margin-bottom: 20px;
+    }
+    #nav-menu ul li a {
+      font-size: 1.2rem;
+      color: #fff;
+      text-decoration: none;
+    }
+    /* Redes Sociales dentro del menú */
+    .menu-sociales {
+      position: absolute;
+      bottom: 30px;
+      left: 0;
+      right: 0;
+      text-align: center;
+      color: #fff;
+    }
+    .menu-sociales p {
+      margin-bottom: 10px;
+    }
+    .menu-sociales ul {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+    }
+    .menu-sociales ul li a img {
+      width: 30px;
+      height: 30px;
     }
   </style>
 </head>
 <body>
-<!-- Overlay para el menú -->
+<!-- Overlay para ambos menús -->
 <div class="menu-overlay"></div>
 
 <header>
   <nav>
     <a href="index.html" class="logo">
-      <img src="/images/Editable%20Photoshop.webp" alt="Logo quesarte" width=250 height="120">
+      <img src="/images/Editable%20Photoshop.webp" alt="Logo quesarte">
     </a>
+    <!-- Botón hamburguesa en esquina superior derecha -->
+
   </nav>
-  <nav class="redes-sociales">
+  <button id="menu-toggle-btn">
+    <img src="/images/menu2.png" alt="Menú">
+  </button>
+</header>
+
+<!-- Menú Lateral Principal (fondo negro) -->
+<div id="nav-menu">
+  <button id="close-nav-menu">&times;</button>
+  <ul>
+    <li><a href="index.html">Inicio</a></li>
+    <li><a href="#productos">Productos</a></li>
+    <li><a href="#filosofia">Conócenos</a></li>
+  </ul>
+  <!-- Redes sociales al fondo del menú -->
+  <div class="menu-sociales">
+    <p>Explora nuestras redes:</p>
     <ul>
       <li>
-        <a href="https://www.instagram.com/quesossagrados" target="_blank">
+        <a href="https://www.instagram.com/quesarte_oficial/" target="_blank">
           <img src="/images/instagram.png" alt="Instagram">
         </a>
       </li>
@@ -107,15 +221,13 @@
         </a>
       </li>
       <li>
-        <a href="https://wa.me/5528491408" target="_blank">
+        <a href="https://wa.me/5219982255404" target="_blank">
           <img src="/images/whatsapp.png" alt="WhatsApp">
         </a>
       </li>
     </ul>
-  </nav>
-
-
-</header>
+  </div>
+</div>
 
 <section class="hero">
   <h2>Bienvenido a un viaje de sabor y espiritualidad</h2>
@@ -129,9 +241,6 @@
     <a href="cotizar.html" class="btn cotizar">Cotizar</a>
   </div>
 </section>
-
-<!-- Nueva sección exclusiva para Cotizar en vista móvil -->
-
 
 <main>
   <section id="productos">
@@ -153,17 +262,19 @@
   <div class="footer-content">
     <h2>Contacto</h2>
     <p>Para consultas y pedidos: <a href="mailto:info@quesossagrados.com">info@quesossagrados.com</a></p>
-    <p class="copyright">&copy; 2025 Quesos Sagrados. Todos los derechos reservados.</p>
+    <p class="copyright">
+      &copy; 2025 Quesos Sagrados. Todos los derechos reservados.
+    </p>
   </div>
 </footer>
 
-<!-- Menú Lateral -->
+<!-- Menú Lateral de Productos -->
 <div id="side-menu">
   <button id="close-menu">&times;</button>
   <div class="menu-content">
     <h2 id="menu-title"></h2>
     <p id="menu-description"></p>
-    <div id="menu-full-description"></div> <!-- Nueva descripción completa -->
+    <div id="menu-full-description"></div>
     <div class="ingredients-section">
       <h3>Ingredientes</h3>
       <div id="menu-ingredients" class="ingredients-list"></div>
@@ -178,6 +289,48 @@
   </div>
 </div>
 
+<!-- Scripts para manejar la apertura y cierre de menús -->
+<script>
+  // Menú principal (hamburguesa)
+  const menuToggleBtn = document.getElementById('menu-toggle-btn');
+  const navMenu = document.getElementById('nav-menu');
+  const closeNavMenuBtn = document.getElementById('close-nav-menu');
+  const overlay = document.querySelector('.menu-overlay');
+
+  // Abrir menú
+  menuToggleBtn.addEventListener('click', () => {
+    navMenu.classList.add('open');
+    overlay.classList.add('active');
+  });
+
+  // Cerrar menú principal con la "X"
+  closeNavMenuBtn.addEventListener('click', () => {
+    navMenu.classList.remove('open');
+    overlay.classList.remove('active');
+  });
+
+  // Menú lateral de productos
+  const sideMenu = document.getElementById('side-menu');
+  const closeSideMenuBtn = document.getElementById('close-menu');
+
+  closeSideMenuBtn.addEventListener('click', () => {
+    sideMenu.classList.remove('open');
+    overlay.classList.remove('active');
+  });
+
+  // Cerrar ambos menús al hacer clic en el overlay
+  overlay.addEventListener('click', () => {
+    if (navMenu.classList.contains('open')) {
+      navMenu.classList.remove('open');
+    }
+    if (sideMenu.classList.contains('open')) {
+      sideMenu.classList.remove('open');
+    }
+    overlay.classList.remove('active');
+  });
+</script>
+
+<!-- Tu lógica de productos (si la tienes) -->
 <script type="module" src="applocal.js"></script>
 </body>
 </html>

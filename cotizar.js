@@ -143,7 +143,7 @@ window.handleImageError = function(imgElement) {
   
     // Evento WhatsApp
     document.getElementById('btn-cotizar').addEventListener('click', () => {
-      const phone = '5528491408';
+      const phone = '5219982255404';
       const message = encodeURIComponent(
         `🚀 Cotización Quesos Sagrados:\n${document.getElementById('summary-box').textContent}`
       );

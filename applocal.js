@@ -163,7 +163,7 @@ function renderProducts(products) {
 
   if (botonCotizar) {
     botonCotizar.addEventListener('click', () => {
-      const phone = '5528491408';
+      const phone = '5219982255404';
       const messageData = {
         product: menuTitle?.textContent || '',
         description: menuFullDescription?.textContent || '', // Agregamos la descripción
