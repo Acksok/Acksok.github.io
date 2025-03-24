@@ -50,14 +50,17 @@ function renderProducts(products) {
                  data-ingredients='${JSON.stringify(product.ingredients)}'
                  data-price="${product.price.toFixed(2)}"
                  data-image="${imagePath}">
-              <img src="${placeholderImage}"
-                   data-src="${imagePath}"
-                   alt="${product.name}"
-                   loading="lazy"
-                   class="lazy-image"
-                   onerror="handleImageError(this)">
+              <div class="img-wrapper">
+                <img src="${placeholderImage}"
+                     data-src="${imagePath}"
+                     alt="${product.name}"
+                     loading="lazy"
+                     class="lazy-image"
+                     onerror="handleImageError(this)">
+              </div>
+
               <h3>${product.name}</h3>
-              <p>${product.description}</p>
+
             </div>
         `;
     }).join('');
