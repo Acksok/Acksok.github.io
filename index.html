@@ -45,20 +45,7 @@
     /* ===============================
        Estilos para el Hero
     ================================ */
-    .hero {
-      text-align: center;
-      padding: 50px 20px;
-    }
-    .hero-buttons {
-      margin-top: 20px;
-    }
-    .hero-buttons a.btn {
-      text-decoration: none;
-      padding: 10px 20px;
-      margin: 0 10px;
-      border: 1px solid #000;
-      border-radius: 4px;
-    }
+
     /* Botón Cotizar en móvil */
     .cotizar-mobile {
       display: none;
@@ -71,16 +58,7 @@
       border: 1px solid #000;
       border-radius: 4px;
     }
-    @media screen and (max-width: 768px) {
-      /* Ocultar el botón Cotizar en el hero */
-      .hero-buttons a.cotizar {
-        display: none;
-      }
-      /* Mostrar la sección exclusiva para Cotizar */
-      .cotizar-mobile {
-        display: block;
-      }
-    }
+
 
     /* ===============================
        Header y Botón de Menú (Hamburguesa)
@@ -236,10 +214,14 @@
     <a href="cotizar.html" class="btn">Cotizar</a>
   </section>
   <div class="hero-buttons">
-    <a href="#productos" class="btn">Explora nuestros productos</a>
-    <!-- Botón Cotizar para vista de escritorio -->
-    <a href="cotizar.html" class="btn cotizar">Cotizar</a>
+    <a href="#productos">
+      <button class="btn btn-slide-bottom btn-slide-bottom--orange"><span>Explora nuestros productos</span></button>
+    </a>
+    <a href="cotizar.html" class="cotizar">
+      <button class="btn btn-slide-bottom btn-slide-bottom--orange"><span>Cotizar</span></button>
+    </a>
   </div>
+
 </section>
 
 <main>
