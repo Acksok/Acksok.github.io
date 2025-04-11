@@ -1,50 +1,9 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
+<html lang="es"><head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Quesos Sagrados - Tablas Holísticas</title>
   <link rel="stylesheet" href="styles.css">
   <style>
-    /* ===============================
-       Menú Lateral de Productos (existente)
-    ================================ */
-    #side-menu {
-      position: fixed;
-      top: 0;
-      right: -400px;
-      width: 400px;
-      height: 100%;
-      background: #fff;
-      box-shadow: -4px 0 15px rgba(0,0,0,0.1);
-      transition: right 0.3s ease-in-out;
-      z-index: 1000;
-      padding: 25px;
-    }
-    #side-menu.open {
-      right: 0;
-    }
-
-    /* ===============================
-       Overlay para ambos menús
-    ================================ */
-    .menu-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.5);
-      z-index: 999;
-      display: none;
-    }
-    .menu-overlay.active {
-      display: block;
-    }
-
-    /* ===============================
-       Estilos para el Hero
-    ================================ */
 
 
     /* ===============================
@@ -52,18 +11,13 @@
        Ubicado en esquina superior derecha
     ================================ */
     header {
-      position: relative; /* Para que el botón se posicione relativo al header */
-      min-height: 80px;   /* Ajusta según tu diseño */
+      position: relative;
+      min-height: 80px;
     }
     header nav {
       position: relative;
-      /* Si deseas alinear el logo a la izquierda, puedes usar display flex:
-         display: flex;
-         align-items: center;
-         padding: 10px 20px; */
     }
     .logo img {
-      /* Ajusta si deseas un tamaño específico */
       width: 250px;
       height: 120px;
     }
@@ -90,8 +44,8 @@
       right: -300px;
       width: 300px;
       height: 100%;
-      background: #000; /* Fondo negro */
-      color: #fff;      /* Texto blanco */
+      background: #000;
+      color: #fff;
       box-shadow: -4px 0 15px rgba(0,0,0,0.1);
       transition: right 0.3s ease-in-out;
       z-index: 1000;
@@ -144,6 +98,7 @@
       width: 30px;
       height: 30px;
     }
+
   </style>
 </head>
 <body>
@@ -155,8 +110,6 @@
     <a href="index.html" class="logo">
       <img src="/images/Editable%20Photoshop.webp" alt="Logo quesarte">
     </a>
-    <!-- Botón hamburguesa en esquina superior derecha -->
-
   </nav>
   <button id="menu-toggle-btn">
     <img src="/images/menu2.png" alt="Menú">
@@ -164,12 +117,14 @@
 </header>
 
 <!-- Menú Lateral Principal (fondo negro) -->
-<div id="nav-menu">
-  <button id="close-nav-menu">&times;</button>
+<div id="nav-menu" class="">
+  <button id="close-nav-menu">×</button>
   <ul>
     <li><a href="index.html">Inicio</a></li>
     <li><a href="#productos">Productos</a></li>
     <li><a href="#filosofia">Conócenos</a></li>
+    <li><a href="Galeria.html">Galeria</a></li>
+    <li><a href="menu.pdf">Menu</a></li>
   </ul>
   <!-- Redes sociales al fondo del menú -->
   <div class="menu-sociales">
@@ -212,16 +167,93 @@
       <button class="btn btn-slide-bottom btn-slide-bottom--orange"><span>Cotizar</span></button>
     </a>
   </div>
-
 </section>
 
 <main>
   <section id="productos">
     <h2>Nuestras Tablas</h2>
     <div class="productos-container">
-      <!-- Productos se cargarán dinámicamente -->
+      <div class="productos-wrapper">
+        <div class="producto " data-title="Tabla Brie Clásica" data-description="Una tabla clásica con una selección de quesos Brie, frutos secos y un toque de miel." data-ingredients="{&quot;quesos&quot;:[&quot;Queso Brie&quot;],&quot;carnes&quot;:[&quot;Salami&quot;,&quot;Jamón ibérico&quot;],&quot;frutos_secos&quot;:[&quot;Almendras&quot;,&quot;Nueces&quot;],&quot;panes&quot;:[&quot;Galletas saladas&quot;,&quot;Pan de masa madre&quot;],&quot;acompañamientos&quot;:[&quot;Miel&quot;,&quot;Higos secos&quot;]}" data-price="43.49" data-image="/images/ID1.jpg">
+          <div class="img-wrapper">
+            <img src="/images/ID1.jpg" data-src="/images/ID1.jpg" alt="Tabla Brie Clásica" loading="lazy" class="lazy-image loaded" onerror="handleImageError(this)">
+          </div>
+          <h3>Tabla Brie Clásica</h3>
+        </div>
+
+        <div class="producto " data-title="Tabla Azul Especial" data-description="Un deleite para los amantes del queso azul, acompañado de frutos secos y mermelada." data-ingredients="{&quot;quesos&quot;:[&quot;Queso Azul&quot;],&quot;carnes&quot;:[&quot;Pastrami&quot;],&quot;frutos_secos&quot;:[&quot;Avellanas&quot;,&quot;Pistachos&quot;],&quot;panes&quot;:[&quot;Tostadas de centeno&quot;],&quot;acompañamientos&quot;:[&quot;Mermelada de higo&quot;,&quot;Uvas&quot;]}" data-price="41.98" data-image="/images/ID2.jpg">
+          <div class="img-wrapper">
+            <img src="/images/ID2.jpg" data-src="/images/ID2.jpg" alt="Tabla Azul Especial" loading="lazy" class="lazy-image loaded" onerror="handleImageError(this)">
+          </div>
+          <h3>Tabla Azul Especial</h3>
+        </div>
+
+        <div class="producto " data-title="Tabla Camembert Gourmet" data-description="Queso Camembert madurado acompañado de prosciutto y una selección de aceitunas." data-ingredients="{&quot;quesos&quot;:[&quot;Queso Camembert&quot;],&quot;carnes&quot;:[&quot;Prosciutto&quot;],&quot;frutos_secos&quot;:[&quot;Nueces&quot;],&quot;panes&quot;:[&quot;Baguette artesanal&quot;],&quot;acompañamientos&quot;:[&quot;Aceitunas verdes&quot;,&quot;Tomates secos&quot;]}" data-price="26.88" data-image="/images/ID3.jpg">
+          <div class="img-wrapper">
+            <img src="/images/ID3.jpg" data-src="/images/ID3.jpg" alt="Tabla Camembert Gourmet" loading="lazy" class="lazy-image loaded" onerror="handleImageError(this)">
+          </div>
+          <h3>Tabla Camembert Gourmet</h3>
+        </div>
+
+        <div class="producto " data-title="Tabla Mixta Suprema" data-description="La combinación perfecta de quesos, carnes y acompañamientos para una experiencia única." data-ingredients="{&quot;quesos&quot;:[&quot;Queso Manchego&quot;,&quot;Queso Gouda&quot;],&quot;carnes&quot;:[&quot;Jamón serrano&quot;,&quot;Chorizo español&quot;],&quot;frutos_secos&quot;:[&quot;Almendras&quot;,&quot;Pistachos&quot;],&quot;panes&quot;:[&quot;Grisines&quot;,&quot;Pan rústico&quot;],&quot;acompañamientos&quot;:[&quot;Miel&quot;,&quot;Aceitunas negras&quot;,&quot;Dátiles&quot;]}" data-price="38.81" data-image="/images/ID4.jpg">
+          <div class="img-wrapper">
+            <img src="/images/ID4.jpg" data-src="/images/ID4.jpg" alt="Tabla Mixta Suprema" loading="lazy" class="lazy-image loaded" onerror="handleImageError(this)">
+          </div>
+          <h3>Tabla Mixta Suprema</h3>
+        </div>
+
+        <div class="producto hidden" data-title="Tabla Camembert Premium" data-description="Un sabor sofisticado con queso Camembert trufado, jamón ibérico y frutos secos." data-ingredients="{&quot;quesos&quot;:[&quot;Queso Camembert Trufado&quot;],&quot;carnes&quot;:[&quot;Jamón ibérico&quot;],&quot;frutos_secos&quot;:[&quot;Nueces&quot;,&quot;Avellanas&quot;],&quot;panes&quot;:[&quot;Tostadas de trigo&quot;],&quot;acompañamientos&quot;:[&quot;Mermelada de frutos rojos&quot;]}" data-price="43.41" data-image="/images/ID5.jpg">
+          <div class="img-wrapper">
+            <img src="/images/ID5.jpg" data-src="/images/ID5.jpg" alt="Tabla Camembert Premium" loading="lazy" class="lazy-image loaded" onerror="handleImageError(this)">
+          </div>
+          <h3>Tabla Camembert Premium</h3>
+        </div>
+
+        <div class="producto hidden" data-title="Tabla Mozzarella Clásica" data-description="Fresca y ligera con mozzarella de búfala, tomates cherry y albahaca." data-ingredients="{&quot;quesos&quot;:[&quot;Mozzarella de búfala&quot;],&quot;carnes&quot;:[&quot;Bresaola&quot;],&quot;frutos_secos&quot;:[&quot;Piñones&quot;],&quot;panes&quot;:[&quot;Focaccia&quot;],&quot;acompañamientos&quot;:[&quot;Tomates cherry&quot;,&quot;Albahaca fresca&quot;]}" data-price="25.51" data-image="/images/ID6.jpg">
+          <div class="img-wrapper">
+            <img src="/images/ID6.jpg" data-src="/images/ID6.jpg" alt="Tabla Mozzarella Clásica" loading="lazy" class="lazy-image loaded" onerror="handleImageError(this)">
+          </div>
+          <h3>Tabla Mozzarella Clásica</h3>
+        </div>
+
+        <div class="producto hidden" data-title="Tabla Brie Gourmet" data-description="Un equilibrio perfecto entre queso Brie, carnes curadas y un toque dulce de miel." data-ingredients="{&quot;quesos&quot;:[&quot;Queso Brie&quot;],&quot;carnes&quot;:[&quot;Salami&quot;,&quot;Jamón serrano&quot;],&quot;frutos_secos&quot;:[&quot;Avellanas&quot;,&quot;Nueces&quot;],&quot;panes&quot;:[&quot;Galletas saladas&quot;],&quot;acompañamientos&quot;:[&quot;Miel&quot;,&quot;Higos secos&quot;]}" data-price="40.84" data-image="/images/ID7.jpg">
+          <div class="img-wrapper">
+            <img src="/images/ID7.jpg" data-src="/images/ID7.jpg" alt="Tabla Brie Gourmet" loading="lazy" class="lazy-image loaded" onerror="handleImageError(this)">
+          </div>
+          <h3>Tabla Brie Gourmet</h3>
+        </div>
+      </div>
+
     </div>
   </section>
+
+  <!-- ======================================== -->
+  <!-- Sección NUEVA: Después de productos -->
+  <!-- ======================================== -->
+  <section class="seccion-despues-productos">
+    <!-- Grid de 4 productos destacados -->
+
+    <div style="text-align: center; margin-bottom: 30px;">
+      <button class="btn btn-slide-bottom btn-ver-mas">Ver más tablas</button>
+    </div>
+    <!-- Bloque oscuro con imagen y texto -->
+    <div class="bloque-oscuro">
+      <div class="imagen-bloque">
+        <img src="/images/quesera.jpg" alt="Arreglo de quesos">
+      </div>
+      <div class="texto-bloque">
+        <p>
+          Descubre nuestras opciones personalizadas para tus eventos. Creamos tablas únicas que combinan sabor, arte y atención a los detalles para sorprender a tus invitados.
+        </p>
+        <a href="cotizar.html">
+          <button class="btn btn-slide-bottom btn-slide-bottom--orange">
+            <span>Cotiza tu tabla personalizada</span>
+          </button>
+        </a>
+      </div>
+    </div>
+  </section>
+  <!-- FIN Sección NUEVA -->
 
   <section id="filosofia">
     <div class="philosophy-content">
@@ -234,18 +266,16 @@
 <footer id="contacto">
   <div class="footer-content">
     <h2>Contacto</h2>
-    <p>Para asistencia: <a href="mailto:quesarte.oficial@gmail.com
-">quesarte.oficial@gmail.com
-    </a></p>
+    <p>Para asistencia: <a href="mailto:quesarte.oficial@gmail.com">quesarte.oficial@gmail.com</a></p>
     <p class="copyright">
-      &copy; 2025 Quesarte Sa de Cv. Todos los derechos reservados.
+      © 2025 Quesarte Sa de Cv. Todos los derechos reservados.
     </p>
   </div>
 </footer>
 
 <!-- Menú Lateral de Productos -->
 <div id="side-menu">
-  <button id="close-menu">&times;</button>
+  <button id="close-menu">×</button>
   <div class="menu-content">
     <h2 id="menu-title"></h2>
     <p id="menu-description"></p>
@@ -307,5 +337,6 @@
 
 <!-- Tu lógica de productos (si la tienes) -->
 <script type="module" src="applocal.js"></script>
-</body>
-</html>
+
+
+</body></html>

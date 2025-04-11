@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
   const menuTitle = document.getElementById('menu-title');
   const menuFullDescription = document.getElementById('menu-full-description'); // Nuevo campo para la descripción completa
   const botonCotizar = document.getElementById('botonCotizar');
+  const container = document.querySelector('.productos-wrapper');
 
   const placeholderImage = 'placeholder.webp'; // Imagen de reserva
   const baseImagePath = '/images/ID'; // Ruta base de imágenes
@@ -32,41 +33,54 @@ document.addEventListener('DOMContentLoaded', function() {
       showError('No pudimos cargar los productos. Intenta recargar la página.');
     });
   }
-
 function renderProducts(products) {
-    const container = document.querySelector('.productos-container');
-    if (!container) {
-        console.error('Contenedor de productos no encontrado');
-        return;
-    }
+  const container = document.querySelector('.productos-wrapper'); // <--- esta línea es clave
+  if (!container) {
+    console.error('Contenedor de productos no encontrado');
+    return;
+  }
 
-    container.innerHTML = products.map(product => {
-        const imagePath = `${baseImagePath}${product.id}.jpg`;
+  const limit = 4;
+  const productosHTML = products.map((product, index) => {
+    const imagePath = `${baseImagePath}${product.id}.jpg`;
+    const hiddenClass = index >= limit ? 'hidden' : '';
 
-        return `
-            <div class="producto"
-                 data-title="${product.name}"
-                 data-description="${product.description}"
-                 data-ingredients='${JSON.stringify(product.ingredients)}'
-                 data-price="${product.price.toFixed(2)}"
-                 data-image="${imagePath}">
-              <div class="img-wrapper">
-                <img src="${placeholderImage}"
-                     data-src="${imagePath}"
-                     alt="${product.name}"
-                     loading="lazy"
-                     class="lazy-image"
-                     onerror="handleImageError(this)">
-              </div>
+    return `
+      <div class="producto ${hiddenClass}"
+           data-title="${product.name}"
+           data-description="${product.description}"
+           data-ingredients='${JSON.stringify(product.ingredients)}'
+           data-price="${product.price.toFixed(2)}"
+           data-image="${imagePath}">
+        <div class="img-wrapper">
+          <img src="${placeholderImage}"
+               data-src="${imagePath}"
+               alt="${product.name}"
+               loading="lazy"
+               class="lazy-image"
+               onerror="handleImageError(this)">
+        </div>
+        <h3>${product.name}</h3>
+      </div>
+    `;
+  }).join('');
 
-              <h3>${product.name}</h3>
+  container.innerHTML = productosHTML;
 
-            </div>
-        `;
-    }).join('');
+  initLazyLoading();
+  initProductHandlers();
 
-    initLazyLoading();
+  const verMasBtn = document.getElementById('verMasBtn');
+  if (verMasBtn) {
+    verMasBtn.addEventListener('click', () => {
+      container.querySelectorAll('.producto.hidden').forEach(el => el.classList.remove('hidden'));
+      verMasBtn.style.display = 'none';
+    });
+  }
 }
+
+
+
 
 
 

@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Quesos Sagrados - Galería</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* ===============================
+           Header y Botón de Menú (Hamburguesa)
+           Ubicado en esquina superior derecha
+        ================================ */
+        header {
+          position: relative;
+          min-height: 80px;
+        }
+        header nav {
+          position: relative;
+        }
+        .logo img {
+          width: 250px;
+          height: 120px;
+        }
+        /* Botón del menú */
+        #menu-toggle-btn {
+          position: absolute;
+          top: 10px;
+          right: 10px;
+          background: transparent;
+          border: none;
+          cursor: pointer;
+        }
+        #menu-toggle-btn img {
+          width: 30px;
+          height: 30px;
+        }
+        /* ===============================
+           Menú Lateral Principal (Fondo negro)
+        ================================ */
+        #nav-menu {
+          position: fixed;
+          top: 0;
+          right: -300px;
+          width: 300px;
+          height: 100%;
+          background: #000;
+          color: #fff;
+          box-shadow: -4px 0 15px rgba(0,0,0,0.1);
+          transition: right 0.3s ease-in-out;
+          z-index: 1000;
+          padding: 25px;
+        }
+        #nav-menu.open {
+          right: 0;
+        }
+        #close-nav-menu {
+          background: transparent;
+          border: none;
+          font-size: 2rem;
+          cursor: pointer;
+          color: #fff;
+        }
+        #nav-menu ul {
+          list-style: none;
+          padding: 0;
+          margin: 70px 0 0;
+          text-align: center;
+        }
+        #nav-menu ul li {
+          margin-bottom: 20px;
+        }
+        #nav-menu ul li a {
+          font-size: 1.2rem;
+          color: #fff;
+          text-decoration: none;
+        }
+        .menu-sociales {
+          position: absolute;
+          bottom: 30px;
+          left: 0;
+          right: 0;
+          text-align: center;
+          color: #fff;
+        }
+        .menu-sociales p {
+          margin-bottom: 10px;
+        }
+        .menu-sociales ul {
+          list-style: none;
+          padding: 0;
+          display: flex;
+          justify-content: center;
+          gap: 15px;
+        }
+        .menu-sociales ul li a img {
+          width: 30px;
+          height: 30px;
+        }
+
+        /* ===============================
+           Galería de Fotos (Contenido Principal)
+        ================================ */
+        .gallery {
+          padding: 40px 10%;
+          background: #f9f9f9;
+        }
+        .gallery h2 {
+          text-align: center;
+          margin-bottom: 40px;
+          font-size: 2.5em;
+          color: #333;
+        }
+        .gallery-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+          gap: 20px;
+        }
+        .gallery-item {
+          overflow: hidden;
+          border-radius: 8px;
+        }
+        .gallery-item img {
+          width: 100%;
+          height: 100%;
+          display: block;
+          object-fit: cover;
+          transition: transform 0.3s ease;
+        }
+        .gallery-item img:hover {
+          transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+<!-- Overlay para menús -->
+<div class="menu-overlay"></div>
+
+<header>
+    <nav>
+        <a href="index.html" class="logo">
+            <img src="/images/Editable%20Photoshop.webp" alt="Logo quesarte">
+        </a>
+    </nav>
+    <button id="menu-toggle-btn">
+        <img src="/images/menu2.png" alt="Menú">
+    </button>
+</header>
+
+<!-- Menú Lateral Principal -->
+<div id="nav-menu">
+    <button id="close-nav-menu">×</button>
+    <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="#productos">Productos</a></li>
+        <li><a href="#filosofia">Conócenos</a></li>
+        <li><a href="galeria.html">Galería</a></li>
+        <li><a href="menu.pdf">Menú</a></li>
+    </ul>
+    <div class="menu-sociales">
+        <p>Explora nuestras redes:</p>
+        <ul>
+            <li>
+                <a href="https://www.instagram.com/quesarte_oficial/" target="_blank">
+                    <img src="/images/instagram.png" alt="Instagram">
+                </a>
+            </li>
+            <li>
+                <a href="https://www.facebook.com/quesossagrados" target="_blank">
+                    <img src="/images/facebook1.png" alt="Facebook">
+                </a>
+            </li>
+            <li>
+                <a href="https://wa.me/5219982255404" target="_blank">
+                    <img src="/images/whatsapp.png" alt="WhatsApp">
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<main>
+    <!-- Sección Galería -->
+    <section class="gallery">
+        <h2>Galería de Fotos</h2>
+        <div class="gallery-grid" id="galleryGrid">
+            <!-- Aquí se insertarán automáticamente los items de la galería -->
+        </div>
+    </section>
+</main>
+
+<footer id="contacto">
+    <div class="footer-content">
+        <h2>Contacto</h2>
+        <p>Para asistencia: <a href="mailto:quesarte.oficial@gmail.com">quesarte.oficial@gmail.com</a></p>
+        <p class="copyright">
+            &copy; 2025 Quesarte Sa de Cv. Todos los derechos reservados.
+        </p>
+    </div>
+</footer>
+
+<!-- Menú Lateral de Productos -->
+<div id="side-menu">
+    <button id="close-menu">×</button>
+    <div class="menu-content">
+        <h2 id="menu-title"></h2>
+        <p id="menu-description"></p>
+        <div id="menu-full-description"></div>
+        <div class="ingredients-section">
+            <h3>Ingredientes</h3>
+            <div id="menu-ingredients" class="ingredients-list"></div>
+        </div>
+        <div class="price-section">
+            <div class="price-tag">
+                <span class="price-label">Precio Total:</span>
+                <span id="menu-price" class="price-amount"></span>
+            </div>
+            <button id="botonCotizar" class="botonCotizar">Cotizar Ahora</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Manejo del menú principal
+    const menuToggleBtn = document.getElementById('menu-toggle-btn');
+    const navMenu = document.getElementById('nav-menu');
+    const closeNavMenuBtn = document.getElementById('close-nav-menu');
+    const overlay = document.querySelector('.menu-overlay');
+
+    menuToggleBtn.addEventListener('click', () => {
+      navMenu.classList.add('open');
+      overlay.classList.add('active');
+    });
+
+    closeNavMenuBtn.addEventListener('click', () => {
+      navMenu.classList.remove('open');
+      overlay.classList.remove('active');
+    });
+
+    // Menú lateral de productos
+    const sideMenu = document.getElementById('side-menu');
+    const closeSideMenuBtn = document.getElementById('close-menu');
+
+    closeSideMenuBtn.addEventListener('click', () => {
+      sideMenu.classList.remove('open');
+      overlay.classList.remove('active');
+    });
+
+    overlay.addEventListener('click', () => {
+      if (navMenu.classList.contains('open')) {
+        navMenu.classList.remove('open');
+      }
+      if (sideMenu.classList.contains('open')) {
+        sideMenu.classList.remove('open');
+      }
+      overlay.classList.remove('active');
+    });
+
+    // Cargar automáticamente las imágenes de la carpeta "Galeria"
+    document.addEventListener("DOMContentLoaded", function() {
+      // Se asume que existe un archivo JSON que contiene un array de nombres de imágenes.
+      fetch('galeria.json')
+        .then(response => response.json())
+        .then(imageList => {
+          const galleryGrid = document.getElementById('galleryGrid');
+          imageList.forEach(imageName => {
+            const galleryItem = document.createElement('div');
+            galleryItem.className = 'gallery-item';
+            const imgElement = document.createElement('img');
+            // Se asume que las imágenes están en la carpeta "Galeria"
+            imgElement.src = 'Galeria/' + imageName;
+            imgElement.alt = "Foto " + imageName;
+            galleryItem.appendChild(imgElement);
+            galleryGrid.appendChild(galleryItem);
+          });
+        })
+        .catch(error => console.error('Error al cargar las imágenes de la galería:', error));
+    });
+</script>
+<script type="module" src="applocal.js"></script>
+</body>
+</html>
